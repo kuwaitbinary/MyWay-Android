@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".ProfileEditActivity" >
+
+    <ImageView
+        android:id="@+id/imageViewEditImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_default_profile_img" />
+
+    <EditText
+        android:id="@+id/editTextUsernameEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewEditImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="@string/etUsername"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:textColor="#FFFFA217"
+        android:textColorHint="#FFB3B1B3" />
+
+    <EditText
+        android:id="@+id/editTextOldPassConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextUsernameEdit"
+        android:layout_below="@+id/editTextUsernameEdit"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="@string/etOldPassword"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:textColor="#FFFFA217"
+        android:textColorHint="#FFB3B1B3" />
+
+    <EditText
+        android:id="@+id/editTextPasswordEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextOldPassConfirm"
+        android:layout_below="@+id/editTextOldPassConfirm"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="@string/etNewPassword"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:textColor="#FFFFA217"
+        android:textColorHint="#FFB3B1B3" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextEmailEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextPasswordEdit"
+        android:layout_below="@+id/editTextPasswordEdit"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="@string/etEmail"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:textColor="#FFFFA217"
+        android:textColorHint="#FFB3B1B3" />
+
+    <ImageView
+        android:id="@+id/imageViewSaveChanges"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editTextEmailEdit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_saveorange" />
+
+</RelativeLayout>

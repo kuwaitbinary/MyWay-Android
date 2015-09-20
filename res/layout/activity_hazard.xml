@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Activity_hazard" >
+
+    <ImageView
+        android:id="@+id/onroad"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_alignTop="@+id/construction"
+        android:layout_toRightOf="@+id/button1"
+        android:src="@drawable/onroad" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/hazardtext"
+        android:layout_below="@+id/construction"
+        android:text="construction" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignRight="@+id/onroad"
+        android:layout_marginRight="14dp"
+        android:text="on road" />
+
+    <ImageView
+        android:id="@+id/construction"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/construction" />
+
+    <EditText
+        android:id="@+id/hazardtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:singleLine="true"
+        android:textColor="#FFFFFF" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hazardtext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="submit"
+        android:textColor="#FFFFA217" />
+
+</RelativeLayout>

@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Activity_AccidentReport" >
+
+    <ImageView
+        android:id="@+id/major"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/minor"
+        android:layout_marginRight="19dp"
+        android:src="@drawable/major" />
+
+    <ImageView
+        android:id="@+id/minor"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="43dp"
+        android:src="@drawable/minor" />
+
+    <EditText
+        android:id="@+id/accidenttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:singleLine="true"
+        android:textColor="#FFFFFF" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accidenttext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:text="submit"
+        android:textColor="#FFFFA217" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/accidenttext"
+        android:layout_below="@+id/minor"
+        android:text="Minor" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignRight="@+id/accidenttext"
+        android:text="Major" />
+
+</RelativeLayout>

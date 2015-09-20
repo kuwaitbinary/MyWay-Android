@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Settings" >
+
+    <TextView
+        android:id="@+id/txtEnableReports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/swtEnableReports"
+        android:layout_alignBottom="@+id/swtEnableReports"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:text="@string/enable_reports"
+        android:textColor="#FFFFFF" />
+
+    <Switch
+        android:id="@+id/swtEnableReports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="36dp" />
+
+    <TextView
+        android:id="@+id/txtEnableNearbyPOI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtEnableReports"
+        android:layout_below="@+id/swtEnableReports"
+        android:layout_marginTop="39dp"
+        android:text="@string/enable_nearby_poi"
+        android:textColor="#FFFFFF" />
+
+    <Switch
+        android:id="@+id/swtEnableNearbyPOI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtEnableNearbyPOI"
+        android:layout_alignBottom="@+id/txtEnableNearbyPOI"
+        android:layout_alignLeft="@+id/swtEnableReports" />
+
+    <Switch
+        android:id="@+id/swtEnableOverspeedAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/swtEnableNearbyPOI"
+        android:layout_below="@+id/swtEnableNearbyPOI"
+        android:layout_marginTop="36dp" />
+
+    <TextView
+        android:id="@+id/txtEnableOverspeedAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/swtEnableOverspeedAlert"
+        android:layout_alignBottom="@+id/swtEnableOverspeedAlert"
+        android:layout_alignLeft="@+id/txtEnableNearbyPOI"
+        android:text="@string/enable_overspeed_alert"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txtEnableVoiceAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtEnableOverspeedAlert"
+        android:layout_below="@+id/swtEnableOverspeedAlert"
+        android:layout_marginTop="18dp"
+        android:text="@string/enable_voice_alert"
+        android:textColor="#FFFFFF" />
+
+    <Switch
+        android:id="@+id/swtEnableVoiceAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtEnableVoiceAlert"
+        android:layout_alignBottom="@+id/txtEnableVoiceAlert"
+        android:layout_alignLeft="@+id/swtEnableOverspeedAlert" />
+
+    <Button
+        android:id="@+id/btnChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/swtEnableVoiceAlert"
+        android:layout_alignRight="@+id/swtEnableVoiceAlert"
+        android:layout_below="@+id/swtEnableVoiceAlert"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_change_language"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txtSelectedLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnChange"
+        android:layout_alignBottom="@+id/btnChange"
+        android:layout_alignLeft="@+id/txtEnableVoiceAlert"
+        android:text="@string/no_language_selected"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

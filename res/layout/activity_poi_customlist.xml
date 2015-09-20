@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#FFF5EBCC"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textViewPOIName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:text="POI Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#666666" />
+
+    <TextView
+        android:id="@+id/textViewPOIDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/textViewPOIName"
+        
+        android:layout_below="@+id/textViewPOIName"
+        android:text="Description"
+        android:paddingTop="5dp"
+        android:paddingRight="100dp"
+        android:textColor="#000000" />
+
+<ImageButton
+    android:id="@+id/imgTrash"
+    android:layout_width="60dp"
+    android:layout_height="50dp"
+    android:layout_alignBottom="@+id/textView1"
+    android:layout_alignParentRight="true"
+    android:paddingRight="20dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/traaash" />
+
+</RelativeLayout>

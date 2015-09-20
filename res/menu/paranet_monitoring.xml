@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.piffs.myway.ParanetMonitoringActivity" >
+
+    <item 
+        android:id="@+id/addDriver"
+        android:icon="@android:drawable/ic_menu_add"
+        android:showAsAction="always"
+        android:title="@string/add_driver"/>
+
+</menu>

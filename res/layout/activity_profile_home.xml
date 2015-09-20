@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".ActivityProfile_1" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+         >
+
+        <ImageView
+            android:id="@+id/imageViewEditIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_edit_profile" />
+
+        <TextView
+            android:id="@+id/textViewProfileUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewProfileImage"
+            android:layout_centerHorizontal="true"
+            android:text="TempUsername"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FF67CFF5" />
+
+        <ImageView
+            android:id="@+id/imageViewProfileImage"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/imageViewEditIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="67dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_default_profile_img" />
+
+        <ImageView
+            android:id="@+id/imageViewLogout"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="70dp"
+            android:src="@drawable/ic_logout" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

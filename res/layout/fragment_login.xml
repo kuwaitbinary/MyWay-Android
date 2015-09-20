@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/editTextUsernameLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/etUsername"
+        android:textColor="#FFFFA217"
+        android:singleLine="true"
+        android:textColorHint="#FFB3B1B3" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextPasswordLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextUsernameLogin"
+        android:layout_below="@+id/editTextUsernameLogin"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/etPassword"
+        android:inputType="textPassword"
+        android:textColor="#FFFFA217"
+        android:singleLine="true"
+        android:textColorHint="#FFB3B1B3" />
+
+    <TextView
+        android:id="@+id/textViewForgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextPasswordLogin"
+        android:layout_below="@+id/editTextPasswordLogin"
+        android:layout_marginTop="16dp"
+        android:text="@string/tvForgotPassword"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FF41B6E0" />
+
+    <ImageView
+        android:id="@+id/imageButtonLogin"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textViewForgot"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="94dp"
+        android:src="@drawable/ic_loginblue" />
+
+</RelativeLayout>

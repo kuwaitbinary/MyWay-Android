@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Activity_TrafficMain" >
+
+    <ImageView
+        android:id="@+id/other"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/accident"
+        android:layout_below="@+id/accident"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/other" />
+
+    <ImageView
+        android:id="@+id/hazard"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/other"
+        android:layout_marginLeft="24dp"
+        android:src="@drawable/hazard" />
+
+    <ImageView
+        android:id="@+id/traffic"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/other"
+        android:layout_alignLeft="@+id/hazard"
+        android:src="@drawable/trafficjam" />
+
+    <Button
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="View all"
+        android:textColor="#FFFFA217" />
+
+    <ImageView
+        android:id="@+id/accident"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/accidents" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/traffic"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/view"
+        android:text="Traffic"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/view"
+        android:text="Accident"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/hazard"
+        android:layout_marginTop="16dp"
+        android:text="Hazard"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/other"
+        android:text="Other"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

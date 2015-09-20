@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Activity_TrafficJam" >
+
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/moderate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:ems="10"
+        android:singleLine="true"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/heavy"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignTop="@+id/moderate"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/heavy" />
+
+    <ImageView
+        android:id="@+id/moderate"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_toLeftOf="@+id/heavy"
+        android:src="@drawable/moderate" />
+
+    <ImageView
+        android:id="@+id/standstill"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/heavy"
+        android:layout_marginRight="24dp"
+        android:src="@drawable/standstill" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:text="submit"
+        android:textColor="#FFFFA217" />
+
+</RelativeLayout>

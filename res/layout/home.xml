@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/txtParentMonitoring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgParentMonitoring"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imgTraffic"
+        android:text="   Parent                                                        Monitoring"
+        android:textAllCaps="false"
+        android:textColor="#FF67CFF5"
+        android:textSize="25sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/imgDailyRoute"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/imgTraffic"
+        android:layout_below="@+id/txtTraffic"
+        android:layout_marginTop="72dp"
+        android:src="@drawable/ic_daily" />
+
+    <TextView
+        android:id="@+id/txtMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imgParentMonitoring"
+        android:layout_below="@+id/imgDailyRoute"
+        android:layout_marginRight="30dp"
+        android:text="Map"
+        android:textColor="#FF67CFF5"
+        android:textSize="25sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/txtDailyRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtMap"
+        android:layout_alignBottom="@+id/txtMap"
+        android:layout_alignLeft="@+id/imgDailyRoute"
+        android:text="Daily Route"
+        android:textColor="#FF67CFF5"
+        android:textSize="25sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/imgMap"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/txtMap"
+        android:layout_alignLeft="@+id/imgParentMonitoring"
+        android:src="@drawable/ic_map" />
+
+    <TextView
+        android:id="@+id/txtTraffic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imgTraffic"
+        android:layout_alignTop="@+id/txtParentMonitoring"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="14dp"
+        android:text="Traffic"
+        android:textColor="#FF67CFF5"
+        android:textSize="25sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/imgParentMonitoring"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/txtParentMonitoring"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="27dp"
+        android:src="@drawable/ic_parent" />
+
+    <ImageView
+        android:id="@+id/imgTraffic"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_traffic" />
+
+</RelativeLayout>
