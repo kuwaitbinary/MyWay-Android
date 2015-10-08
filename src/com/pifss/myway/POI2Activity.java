@@ -44,7 +44,7 @@ public class POI2Activity extends Activity {
 		final GoogleMap map=mapFragment.getMap();
 		
 		
-		 mirqap=new LatLng(29.31407,47.4917 );
+		 mirqap=new LatLng(29.31407,47.4917);
 		
 		CameraUpdate cam=CameraUpdateFactory.newLatLngZoom(mirqap, 13);
 		map.moveCamera(cam);

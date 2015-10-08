@@ -23,7 +23,6 @@
     <string name="title_activity_favorites">FavoritesActivity</string>
     <string name="etFavoriteTitle">Title</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
-    
     <string name="enable_reports">Enable Reports</string>
     <string name="enable_nearby_poi">Enable Nearby POI</string>
     <string name="enable_overspeed_alert">Enable Overspeed Alert</string>
@@ -45,7 +44,6 @@
     <string name="lblThisDestination">xxxx</string>
     <string name="dialogMessageExit">Are you sure you want to exit?</string>
     <string name="dialogTitleExit">Exit?</string>
-    
     <string name="title_activity_activity__accident_report">Activity_AccidentReport</string>
     <string name="title_activity_activity__traffic_jam">Activity_TrafficJam</string>
     <string name="title_activity_activity_hazard">Activity_hazard</string>
@@ -53,12 +51,9 @@
     <string name="title_activity_activity__view_report">Activity_ViewReport</string>
     <string name="title_activity_activity__report_details">Activity_ReportDetails</string>
     <string name="title_activity_traffic_main">Activity_traffic_main</string>
-    
-
     <string name="title_activity_poi1">POI1Activity</string>
     <string name="title_activity_poi2">POI2Activity</string>
     <string name="title_activity_poi3">POI3Activity</string>
-    
     <string name="action_settings">Settings</string>
     <string name="add_driver">Add Driver</string>
     <string name="empty_driver_list_title">No Driver Found</string>
@@ -69,22 +64,20 @@
     <string name="delete_driver_toast_message">The driver has been removed successfully</string>
     <string name="search_title">Search Driver</string>
     <string name="add_journey">Add Journey</string>
-    
-    
-      <string-array name="place_type">
+
+    <string-array name="place_type">
         <item>airport</item>
         <item>atm</item>
         <item>bank</item>
-        <item>bus_station</item>        
+        <item>bus_station</item>
         <item>church</item>
         <item>doctor</item>
-        <item>hospital</item>        
+        <item>hospital</item>
         <item>mosque</item>
         <item>movie_theater</item>
         <item>hindu_temple</item>
         <item>restaurant</item>
     </string-array>
-    
     <string-array name="place_type_name">
         <item>Airport</item>
         <item>ATM</item>
@@ -98,4 +91,21 @@
         <item>Hindu Temple</item>
         <item>Restaurant</item>
     </string-array>
+
+    <string name="title_activity_favorites_view">FavoritesViewActivity</string>
+    <string name="bAddFav">Add Favorite</string>
+    <string name="title_activity_add_favorite">AddFavoriteActivity</string>
+    <string name="etAddFavName">Name</string>
+    <string name="bSubmitAddFav">Add</string>
+    <string name="tvMapNotice">Hold down to set pin</string>
+    <string name="title_activity_point_on_map_avtivity">PointOnMapAvtivity</string>
+    <string name="title_activity_t3_map">T3MapActivity</string>
+    <string name="title_activity_map_point">MapPointActivity</string>
+    <string name="title_activity_events_view">EventsViewActivity</string>
+    <string name="bReqEvent">Request Event</string>
+    <string name="title_activity_events_categories_view">EventsCategoriesViewActivity</string>
+    <string name="title_activity_event_info_view">EventInfoViewActivity</string>
+    <string name="bSendToMap">Send To Map</string>
+    <string name="title_activity_request_event">RequestEventActivity</string>
+
 </resources>

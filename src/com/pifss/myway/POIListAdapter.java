@@ -48,86 +48,91 @@ public class POIListAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		return arg0;
 	}
-
 	@Override
-	public View getView(final int pos, View v, ViewGroup arg2) {
+	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		View myView= layoutInflater.inflate(R.layout.activity_poi_customlist, null);
-		
-		TextView poitvName = (TextView) myView.findViewById(R.id.textViewPOIName);
-		TextView poitvDesc = (TextView) myView.findViewById(R.id.textViewPOIDesc);
-		
-		poitvName.setText(poi.get(pos));
-		poitvDesc.setText(poiDescription.get(pos));
-		ImageButton remove = (ImageButton) myView.findViewById(R.id.imgTrash);
-		remove.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				String PREF_NAME = "userInformation"; 
-				final SharedPreferences prefs = v.getContext().getSharedPreferences(PREF_NAME, v.getContext().MODE_APPEND);
-				
-				if(prefs.getBoolean("isLoggedIn", false)){
-					Builder b = new Builder(context);
-					b.setTitle("Confirm deletion");
-					b.setMessage("Are you sure you want to remove this item from your list?");
-					b.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							Toast.makeText(context, "Removed!", Toast.LENGTH_SHORT).show();
-							poi.remove(getItem(pos));
-//							DailyRoutesAdapter refreshed = new DailyRoutesAdapter(routes, context);
-							
-						                notifyDataSetChanged();
-						        
-						}
-					});
-			
-					
-					b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							Toast.makeText(context, "Cancelled!", Toast.LENGTH_SHORT).show();
-						}
-					});
-					Dialog d = b.create();
-					d.show();
-				} else {
-					Toast.makeText(v.getContext(), "Log in to delete!", Toast.LENGTH_SHORT).show();;
-				}
-				
-				
-			}
-		});
-		
-		myView.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				Intent intent = new Intent(context, POI3Activity.class);
-	             //Get the value of the item you clicked
-			
-            //int itemClickedname = (Integer) arg0.getAdapter().getItem(pos);
-            
-				 String itemName =poi.get(pos);
-	             intent.putExtra("Name", itemName);
-	             
-	             intent.putExtra("Description", poiDescription.get(pos));
-	             Toast.makeText(context, "Item CLicked is ", Toast.LENGTH_LONG).show();
-	             context.startActivity(intent);
-				
-			}
-		});
-		
-		return myView;
+		return null;
 	}
+
+//	@Override
+//	public View getView(final int pos, View v, ViewGroup arg2) {
+		// TODO Auto-generated method stub
+//		View myView= layoutInflater.inflate(, null);
+		
+//		TextView poitvName = (TextView) myView.findViewById(R.id.textViewPOIName);
+//		TextView poitvDesc = (TextView) myView.findViewById(R.id.textViewPOIDesc);
+//		
+//		poitvName.setText(poi.get(pos));
+//		poitvDesc.setText(poiDescription.get(pos));
+//		ImageButton remove = (ImageButton) myView.findViewById(R.id.imgTrash);
+//		remove.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				String PREF_NAME = "userInformation"; 
+//				final SharedPreferences prefs = v.getContext().getSharedPreferences(PREF_NAME, v.getContext().MODE_APPEND);
+//				
+//				if(prefs.getBoolean("isLoggedIn", false)){
+//					Builder b = new Builder(context);
+//					b.setTitle("Confirm deletion");
+//					b.setMessage("Are you sure you want to remove this item from your list?");
+//					b.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+//						
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//							// TODO Auto-generated method stub
+//							Toast.makeText(context, "Removed!", Toast.LENGTH_SHORT).show();
+//							poi.remove(getItem(pos));
+////							DailyRoutesAdapter refreshed = new DailyRoutesAdapter(routes, context);
+//							
+//						                notifyDataSetChanged();
+//						        
+//						}
+//					});
+//			
+//					
+//					b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//						
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//							// TODO Auto-generated method stub
+//							Toast.makeText(context, "Cancelled!", Toast.LENGTH_SHORT).show();
+//						}
+//					});
+//					Dialog d = b.create();
+//					d.show();
+//				} else {
+//					Toast.makeText(v.getContext(), "Log in to delete!", Toast.LENGTH_SHORT).show();;
+//				}
+//				
+//				
+//			}
+//		});
+		
+//		myView.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				
+//				Intent intent = new Intent(context, POI3Activity.class);
+//	             //Get the value of the item you clicked
+//			
+//            //int itemClickedname = (Integer) arg0.getAdapter().getItem(pos);
+//            
+//				 String itemName =poi.get(pos);
+//	             intent.putExtra("Name", itemName);
+//	             
+//	             intent.putExtra("Description", poiDescription.get(pos));
+//	             Toast.makeText(context, "Item CLicked is ", Toast.LENGTH_LONG).show();
+//	             context.startActivity(intent);
+//				
+//			}
+//		});
+		
+//		return myView;
+//	}
 	
 	
 }
