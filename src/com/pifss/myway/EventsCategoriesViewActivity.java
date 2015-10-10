@@ -153,7 +153,7 @@ class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
 				
 				ArrayList<BasicNameValuePair> urlparameters=new ArrayList<BasicNameValuePair>();
 			
-				URI u=new URI("http://mobile.comxa.com/events/all_events.jsp");
+				URI u=new URI("http://mobile.comxa.com/events/list_events.json");
 				DefaultHttpClient client=new DefaultHttpClient();
 				
 				HttpPost post = new HttpPost(u);
@@ -205,8 +205,8 @@ class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
 			        String Flat = FavObject.getString("latitude");
 			        String Flong = FavObject.getString("longitude");
 			        String Fimage = FavObject.getString("image");
-			        String FSdate = "2015-10-"+(i+1);//FavObject.getString("startDate");
-			        String FEdate = "2015-11-"+(i+2);//FavObject.getString("endDate");
+			        String FSdate = FavObject.getString("startDate");
+			        String FEdate = FavObject.getString("endDate");
 			        Log.d("test:", FavObject.toString());
 			       Event e = new Event(Fname, Fdes, Fcat, Flat, Flong, FSdate, FEdate, Fimage);
 			        eventsList.add(e);
