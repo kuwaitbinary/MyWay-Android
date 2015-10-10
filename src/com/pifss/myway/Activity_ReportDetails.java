@@ -36,6 +36,10 @@ public class Activity_ReportDetails extends Activity {
 		setContentView(R.layout.activity_report_details);
 		 MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.rmap);
 		 final GoogleMap map=mapFragment.getMap();
+//		 CameraUpdate point = CameraUpdateFactory.newLatLng(new LatLng(29.298887, 47.5539301));
+//		 map.moveCamera(point);
+		 map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(29.298887, 47.5539301)));
+			map.animateCamera(CameraUpdateFactory.zoomTo(7));
 		System.out.println("back to oncreate");
 		 if(Home.reports==null )
 		 {
