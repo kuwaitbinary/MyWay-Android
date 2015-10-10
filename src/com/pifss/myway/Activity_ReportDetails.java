@@ -15,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -62,12 +63,74 @@ public class Activity_ReportDetails extends Activity {
 	                String  lat= jo.getString("report_lat");
 	                Double latd = Double.parseDouble(lat);
 	                Double logd = Double.parseDouble(log);
-
+	                Integer idi = Integer.parseInt(id);
+	                if(idi==1)
+	                {
+	                	 System.out.println("lat is"+latd+"lod is "+logd);
+	 	                map.addMarker(new MarkerOptions()
+	 	                .position(new LatLng(latd,logd))
+	 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_other)));
+	 			
+	                }
 	                
-	                System.out.println("lat is"+latd+"lod is "+logd);
-	                map.addMarker(new MarkerOptions()
-	                .position(new LatLng(latd,logd))
-	                .title(comment));
+	                else if (idi==2)
+	                {
+	                	
+	                	 System.out.println("lat is"+latd+"lod is "+logd);
+		 	                map.addMarker(new MarkerOptions()
+		 	                .position(new LatLng(latd,logd))
+		 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_construction)));
+		 			
+	                }
+	                else if (idi==3)
+	                {
+	                	 System.out.println("lat is"+latd+"lod is "+logd);
+		 	                map.addMarker(new MarkerOptions()
+		 	                .position(new LatLng(latd,logd))
+		 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_onroad)));
+		 				
+	                }
+	                
+	                else if(idi==4)
+	                {
+	                	
+	                	 System.out.println("lat is"+latd+"lod is "+logd);
+		 	                map.addMarker(new MarkerOptions()
+		 	                .position(new LatLng(latd,logd))
+		 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_moderate)));
+		 			
+	                }
+	                else if (idi==5)
+	                {
+	                	 System.out.println("lat is"+latd+"lod is "+logd);
+		 	                map.addMarker(new MarkerOptions()
+		 	                .position(new LatLng(latd,logd))
+		 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_heavy)));
+		 				
+	                }
+	                
+	                else if(idi == 6)
+	                { System.out.println("lat is"+latd+"lod is "+logd);
+ 	                map.addMarker(new MarkerOptions()
+ 	                .position(new LatLng(latd,logd))
+ 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_standstill)));
+ 			}
+	                
+	                else if(idi == 7)
+	                { System.out.println("lat is"+latd+"lod is "+logd);
+ 	                map.addMarker(new MarkerOptions()
+ 	                .position(new LatLng(latd,logd))
+ 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_minor)));
+ 			}
+	                
+	                else
+	                {
+	                	 System.out.println("lat is"+latd+"lod is "+logd);
+		 	                map.addMarker(new MarkerOptions()
+		 	                .position(new LatLng(latd,logd))
+		 	                .title(comment).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_icon_major)));
+		 			
+	                }
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
