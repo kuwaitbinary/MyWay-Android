@@ -59,19 +59,6 @@
         android:layout_alignLeft="@+id/imgParentMonitoring"
         android:src="@drawable/ic_map" />
 
-    <TextView
-        android:id="@+id/txtTraffic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/imgTraffic"
-        android:layout_alignTop="@+id/txtParentMonitoring"
-        android:layout_marginRight="19dp"
-        android:layout_marginTop="14dp"
-        android:text="Traffic"
-        android:textColor="#FF67CFF5"
-        android:textSize="25sp"
-        android:typeface="sans" />
-
     <ImageView
         android:id="@+id/imgParentMonitoring"
         android:layout_width="120dp"
@@ -90,5 +77,17 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="28dp"
         android:src="@drawable/ic_traffic" />
+
+    <TextView
+        android:id="@+id/txtTraffic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtParentMonitoring"
+        android:layout_alignRight="@+id/imgTraffic"
+        android:text="View Reports"
+        android:paddingLeft="50px"
+        android:textColor="#FF67CFF5"
+        android:textSize="25sp"
+        android:typeface="sans" />
 
 </RelativeLayout>

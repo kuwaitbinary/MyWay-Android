@@ -47,9 +47,9 @@ class DownloadTaskReport extends AsyncTask<String, Integer, String>{
 		            // CONVERT RESPONSE STRING TO JSON ARRAY
 		            JSONObject allData = new JSONObject(result);
 		            JSONArray ja = allData.getJSONArray("result_data");
-		            Activity_TrafficMain.reports = ja;
+		            Home.reports = ja;
 		            System.out.println("Im In LIST ALL REPORTS");
-		            System.out.println( Activity_TrafficMain.reports);
+		            System.out.println( Home.reports);
 		         //   System.out.println("ja"+ja);
 		            
 		         // ITERATE THROUGH AND RETRIEVE CLUB FIELDS

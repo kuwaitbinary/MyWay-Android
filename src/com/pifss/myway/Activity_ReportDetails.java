@@ -36,26 +36,27 @@ public class Activity_ReportDetails extends Activity {
 		 MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.rmap);
 		 final GoogleMap map=mapFragment.getMap();
 		System.out.println("back to oncreate");
-		 if(Activity_TrafficMain.reports==null )
+		 if(Home.reports==null )
 		 {
 			 System.out.println("YES it is null");
 //				lr.getReports();
+			 
 				System.out.println("IM IN Activity_ReportDetails ");
-				System.out.println(Activity_TrafficMain.reports);
+				System.out.println(Home.reports);
 				
 		 }
 		 else{
 		 System.out.println("NOT NULL");
 			System.out.println("IM IN Activity_ReportDetails ");
-			System.out.println(Activity_TrafficMain.reports);
+			System.out.println(Home.reports);
 			   // ITERATE THROUGH AND RETRIEVE CLUB FIELDS
-            int n = Activity_TrafficMain.reports.length();
+            int n = Home.reports.length();
             System.out.println("Length is " + n);
             for (int i = 0; i < n; i++) {
 //                // GET INDIVIDUAL JSON OBJECT FROM JSON ARRAY
                 JSONObject jo;
 				try {
-					jo = Activity_TrafficMain.reports.getJSONObject(i);
+					jo = Home.reports.getJSONObject(i);
 					   // RETRIEVE EACH JSON OBJECT'S FIELDS
 	                String id = jo.getString("report_type");
 	                String comment = jo.getString("report_comments");

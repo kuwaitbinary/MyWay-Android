@@ -1,6 +1,8 @@
 package com.pifss.myway;
 import java.util.Locale;
 
+import org.json.JSONArray;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -17,14 +19,15 @@ import android.widget.Toast;
 public class Home extends Activity {
 
 	final static String PREF_NAME = "userInformation"; 
-	
+	public static JSONArray reports=null;
+	ListAllReports lr = new ListAllReports();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		
+		lr.getReports();
 		final SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_APPEND);
 		
 		//setting image resource from durable
@@ -49,9 +52,12 @@ public class Home extends Activity {
 					public void onClick(View v) {
 						Intent i;
 						if(prefs.getBoolean("isLoggedIn", false)){
-							i = new Intent(Home.this, Activity_TrafficMain.class);
+							
+//							i = new Intent(Home.this, Activity_TrafficMain.class);
+							i = new Intent(Home.this, Activity_ReportDetails.class);
 						} else {
-							i = new Intent(Home.this, Activity_ViewReport.class);
+//							i = new Intent(Home.this, Activity_ViewReport.class);
+							i = new Intent(Home.this, Activity_ReportDetails.class);
 						}
 						startActivity(i);
 						finish();

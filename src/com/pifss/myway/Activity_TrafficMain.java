@@ -16,13 +16,13 @@ public class Activity_TrafficMain extends Activity {
 
 	// main class of traffic reports 
 	
-	public static JSONArray reports=null;
-	ListAllReports lr = new ListAllReports();
+//	public static JSONArray reports=null;
+//	ListAllReports lr = new ListAllReports();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_traffic_main);
-		lr.getReports();
+//		lr.getReports();
 		// four image views represents all types of traffic reports (traffic jam,accident,hazard,other)
 		ImageView traffic  = (ImageView) findViewById(R.id.traffic);
 		ImageView accident = (ImageView) findViewById(R.id.accident);
