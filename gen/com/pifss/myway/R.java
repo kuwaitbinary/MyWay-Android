@@ -16,7 +16,7 @@ public final class R {
     public static final class attr {
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
-    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
+    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, FLUID or
     &lt;width&gt;x&lt;height&gt;.
     
          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
@@ -26,11 +26,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int adSize=0x7f01000e;
+        public static final int adSize=0x7f010000;
         /** 
     A comma-separated list of the supported ad sizes. The sizes must be one of
     BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
-    WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
+    WIDE_SKYSCRAPER, FLUID or &lt;width&gt;x&lt;height&gt;.
     
          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
@@ -39,7 +39,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int adSizes=0x7f01000f;
+        public static final int adSizes=0x7f010001;
         /**  The ad unit ID. 
          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
@@ -48,7 +48,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int adUnitId=0x7f010010;
+        public static final int adUnitId=0x7f010002;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ambientEnabled=0x7f010016;
         /**  Theme to be used for the Wallet selector 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -60,7 +68,7 @@ containing a value of this type.
 <tr><td><code>holo_light</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int appTheme=0x7f010024;
+        public static final int appTheme=0x7f010017;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -70,7 +78,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behindOffset=0x7f010003;
+        public static final int behindOffset=0x7f01002a;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -78,7 +86,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behindScrollScale=0x7f010005;
+        public static final int behindScrollScale=0x7f01002c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -88,7 +96,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behindWidth=0x7f010004;
+        public static final int behindWidth=0x7f01002b;
         /**  The appearance of the buy button 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -108,7 +116,7 @@ containing a value of this type.
 <tr><td><code>monochrome</code></td><td>3</td><td></td></tr>
 </table>
          */
-        public static final int buyButtonAppearance=0x7f01002b;
+        public static final int buyButtonAppearance=0x7f01001e;
         /**  Height of the buy button. This includes an 8dp padding (4dp on each side) used for
              pressed and focused states of the button. The value can be a specific height, e.g.
              "48dp", or special values "match_parent" and "wrap_content". 
@@ -130,7 +138,7 @@ containing a value of this type.
 <tr><td><code>wrap_content</code></td><td>-2</td><td></td></tr>
 </table>
          */
-        public static final int buyButtonHeight=0x7f010028;
+        public static final int buyButtonHeight=0x7f01001b;
         /**  The text on the buy button 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -147,7 +155,7 @@ containing a value of this type.
 <tr><td><code>donate_with_google</code></td><td>4</td><td></td></tr>
 </table>
          */
-        public static final int buyButtonText=0x7f01002a;
+        public static final int buyButtonText=0x7f01001d;
         /**  Width of the buy button. This includes an 8dp padding (4dp on each side) used for
              pressed and focused states of the button. The value can be a specific width, e.g.
              "300dp", or special values "match_parent" and "wrap_content". 
@@ -169,7 +177,7 @@ containing a value of this type.
 <tr><td><code>wrap_content</code></td><td>-2</td><td></td></tr>
 </table>
          */
-        public static final int buyButtonWidth=0x7f010029;
+        public static final int buyButtonWidth=0x7f01001c;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -177,7 +185,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraBearing=0x7f010015;
+        public static final int cameraBearing=0x7f010007;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -185,7 +193,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTargetLat=0x7f010016;
+        public static final int cameraTargetLat=0x7f010008;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -193,7 +201,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTargetLng=0x7f010017;
+        public static final int cameraTargetLng=0x7f010009;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -201,7 +209,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTilt=0x7f010018;
+        public static final int cameraTilt=0x7f01000a;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -209,7 +217,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraZoom=0x7f010019;
+        public static final int cameraZoom=0x7f01000b;
         /** 
         Whether or not this view should have a circular clip applied
         
@@ -220,7 +228,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int circleCrop=0x7f010013;
+        public static final int circleCrop=0x7f010005;
         /**  Google Wallet environment to use 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -234,7 +242,7 @@ containing a value of this type.
 <tr><td><code>strict_sandbox</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int environment=0x7f010025;
+        public static final int environment=0x7f010018;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -242,7 +250,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fadeDegree=0x7f01000b;
+        public static final int fadeDegree=0x7f010032;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -250,7 +258,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fadeEnabled=0x7f01000a;
+        public static final int fadeEnabled=0x7f010031;
         /**  Fragment mode 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -262,12 +270,12 @@ containing a value of this type.
 <tr><td><code>selectionDetails</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int fragmentMode=0x7f010027;
+        public static final int fragmentMode=0x7f01001a;
         /**  A style resource specifing attributes to customize the look and feel of WalletFragment 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int fragmentStyle=0x7f010026;
+        public static final int fragmentStyle=0x7f010019;
         /** 
         The fixed aspect ratio to use in aspect ratio adjustments.
         
@@ -278,7 +286,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int imageAspectRatio=0x7f010012;
+        public static final int imageAspectRatio=0x7f010004;
         /** 
         What kind of aspect ratio adjustment to do.  It must be one of "none", "adjust_width",
         or "adjust_height".
@@ -294,7 +302,7 @@ containing a value of this type.
 <tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int imageAspectRatioAdjust=0x7f010011;
+        public static final int imageAspectRatioAdjust=0x7f010003;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -302,7 +310,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int liteMode=0x7f01001a;
+        public static final int liteMode=0x7f01000c;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -316,31 +324,31 @@ containing a value of this type.
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
          */
-        public static final int mapType=0x7f010014;
+        public static final int mapType=0x7f010006;
         /**  Masked wallet details background 
          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int maskedWalletDetailsBackground=0x7f01002e;
+        public static final int maskedWalletDetailsBackground=0x7f010021;
         /**  "Change" button background in masked wallet details view 
          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int maskedWalletDetailsButtonBackground=0x7f010030;
+        public static final int maskedWalletDetailsButtonBackground=0x7f010023;
         /**  TextAppearance for the "Change" button in masked wallet details view 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int maskedWalletDetailsButtonTextAppearance=0x7f01002f;
+        public static final int maskedWalletDetailsButtonTextAppearance=0x7f010022;
         /**  TextAppearance for headers describing masked wallet details 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int maskedWalletDetailsHeaderTextAppearance=0x7f01002d;
+        public static final int maskedWalletDetailsHeaderTextAppearance=0x7f010020;
         /**  Type of the wallet logo image in masked wallet details view 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -356,7 +364,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>monochrome</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int maskedWalletDetailsLogoImageType=0x7f010032;
+        public static final int maskedWalletDetailsLogoImageType=0x7f010025;
         /**  Color of the Google Wallet logo text in masked wallet details view 
          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
@@ -366,12 +374,12 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int maskedWalletDetailsLogoTextColor=0x7f010031;
+        public static final int maskedWalletDetailsLogoTextColor=0x7f010024;
         /**  TextAppearance for masked wallet details 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int maskedWalletDetailsTextAppearance=0x7f01002c;
+        public static final int maskedWalletDetailsTextAppearance=0x7f01001f;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -382,11 +390,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>right</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int mode=0x7f010000;
+        public static final int mode=0x7f010027;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int selectorDrawable=0x7f01000d;
+        public static final int selectorDrawable=0x7f010034;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -394,11 +402,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int selectorEnabled=0x7f01000c;
+        public static final int selectorEnabled=0x7f010033;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int shadowDrawable=0x7f010008;
+        public static final int shadowDrawable=0x7f01002f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -408,7 +416,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int shadowWidth=0x7f010009;
+        public static final int shadowWidth=0x7f010030;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -420,7 +428,7 @@ containing a value of this type.
 <tr><td><code>none</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int touchModeAbove=0x7f010006;
+        public static final int touchModeAbove=0x7f01002d;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -432,7 +440,7 @@ containing a value of this type.
 <tr><td><code>none</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int touchModeBehind=0x7f010007;
+        public static final int touchModeBehind=0x7f01002e;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -440,7 +448,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiCompass=0x7f01001b;
+        public static final int uiCompass=0x7f01000d;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -448,7 +456,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiMapToolbar=0x7f010023;
+        public static final int uiMapToolbar=0x7f010015;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -456,7 +464,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiRotateGestures=0x7f01001c;
+        public static final int uiRotateGestures=0x7f01000e;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -464,7 +472,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiScrollGestures=0x7f01001d;
+        public static final int uiScrollGestures=0x7f01000f;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -472,7 +480,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiTiltGestures=0x7f01001e;
+        public static final int uiTiltGestures=0x7f010010;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -480,7 +488,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiZoomControls=0x7f01001f;
+        public static final int uiZoomControls=0x7f010011;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -488,7 +496,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiZoomGestures=0x7f010020;
+        public static final int uiZoomGestures=0x7f010012;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -496,15 +504,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int useViewLifecycle=0x7f010021;
+        public static final int useViewLifecycle=0x7f010013;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int viewAbove=0x7f010001;
+        public static final int viewAbove=0x7f010028;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int viewBehind=0x7f010002;
+        public static final int viewBehind=0x7f010029;
         /**  Defines the set of transition to be used between activities 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -516,7 +524,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>none</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int windowTransitionStyle=0x7f010033;
+        public static final int windowTransitionStyle=0x7f010026;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -524,7 +532,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int zOrderOnTop=0x7f010022;
+        public static final int zOrderOnTop=0x7f010014;
     }
     public static final class color {
         public static final int common_action_bar_splitter=0x7f080009;
@@ -689,177 +697,163 @@ containing a value of this type.
         public static final int wherewewok=0x7f020070;
     }
     public static final class id {
-        public static final int EditTextEmailReg=0x7f050092;
-        public static final int aa=0x7f050055;
-        public static final int accident=0x7f050081;
-        public static final int accidenttext=0x7f050027;
-        public static final int action_settings=0x7f0500a7;
-        public static final int addDriver=0x7f0500a9;
-        public static final int addJourney=0x7f0500a8;
-        public static final int adjust_height=0x7f050008;
-        public static final int adjust_width=0x7f050007;
-        public static final int book_now=0x7f05001c;
-        public static final int btnChange=0x7f05007a;
-        public static final int btn_find=0x7f050043;
-        public static final int button1=0x7f050028;
-        public static final int button2=0x7f050070;
-        public static final int button3=0x7f050071;
-        public static final int buttonAddFav=0x7f05003d;
-        public static final int buttonNavi=0x7f050063;
-        public static final int buttonReqEvent=0x7f050037;
-        public static final int buttonSend=0x7f050088;
-        public static final int buttonSubmitAddFav=0x7f05002b;
-        public static final int buttonViewReport=0x7f050034;
-        public static final int button_AddDriver=0x7f05004c;
-        public static final int buyButton=0x7f050013;
-        public static final int buy_now=0x7f05001b;
-        public static final int buy_with=0x7f050017;
-        public static final int buy_with_google=0x7f05001a;
-        public static final int cast_notification_id=0x7f050006;
-        public static final int classic=0x7f050021;
-        public static final int comment=0x7f05007c;
-        public static final int construction=0x7f05003f;
-        public static final int deleteDriver=0x7f05008b;
-        public static final int donate_with=0x7f050019;
-        public static final int donate_with_google=0x7f05001d;
-        public static final int driverList=0x7f050054;
-        public static final int driverName=0x7f05008a;
-        public static final int editText1=0x7f05005a;
-        public static final int editText2=0x7f050059;
-        public static final int editTextAddFavName=0x7f05002c;
-        public static final int editTextEmailEdit=0x7f050069;
-        public static final int editTextEnterEmail=0x7f050087;
-        public static final int editTextFavTitle=0x7f050039;
-        public static final int editTextOldPassConfirm=0x7f050067;
-        public static final int editTextPasswordEdit=0x7f050068;
-        public static final int editTextPasswordLogin=0x7f05008d;
-        public static final int editTextPasswordReg=0x7f050091;
-        public static final int editTextUsernameEdit=0x7f050066;
-        public static final int editTextUsernameLogin=0x7f05008c;
-        public static final int editTextUsernameReg=0x7f050090;
-        public static final int fullscreen=0x7f050003;
-        public static final int google_wallet_classic=0x7f05001e;
-        public static final int google_wallet_grayscale=0x7f05001f;
-        public static final int google_wallet_monochrome=0x7f050020;
-        public static final int grayscale=0x7f050022;
-        public static final int hazard=0x7f050082;
-        public static final int hazardtext=0x7f050040;
-        public static final int heavy=0x7f05007e;
-        public static final int holo_dark=0x7f05000d;
-        public static final int holo_light=0x7f05000e;
-        public static final int hybrid=0x7f05000c;
-        public static final int image=0x7f0500a2;
-        public static final int imageButton1=0x7f050057;
-        public static final int imageButton2=0x7f050056;
-        public static final int imageButtonLogin=0x7f05008f;
-        public static final int imageButtonRegister=0x7f050093;
-        public static final int imageView1=0x7f050035;
-        public static final int imageViewAddFav=0x7f05003b;
-        public static final int imageViewEditIcon=0x7f05006b;
-        public static final int imageViewEditImage=0x7f050065;
-        public static final int imageViewGetLocation=0x7f05003a;
-        public static final int imageViewLogout=0x7f05006e;
-        public static final int imageViewProfile=0x7f050030;
-        public static final int imageViewProfileImage=0x7f05006d;
-        public static final int imageViewSaveChanges=0x7f05006a;
-        public static final int imageView_ParentControl_ProfilePicture=0x7f05004b;
-        public static final int imgDailyRoute=0x7f050097;
-        public static final int imgMap=0x7f05009b;
-        public static final int imgParentMonitoring=0x7f050095;
-        public static final int imgTraffic=0x7f050096;
-        public static final int left=0x7f050000;
-        public static final int list=0x7f05002f;
-        public static final int listTitle=0x7f050053;
-        public static final int listView1=0x7f050058;
-        public static final int listView2=0x7f050038;
-        public static final int listViewCategoryEvents=0x7f050036;
-        public static final int listViewFavorites=0x7f05003c;
-        public static final int listView_ParentControl_DriversList=0x7f050049;
-        public static final int logo_only=0x7f050018;
-        public static final int major=0x7f050025;
-        public static final int map=0x7f050044;
-        public static final int mapAddFav=0x7f05002e;
-        public static final int mapViewPoint=0x7f050045;
-        public static final int margin=0x7f050002;
-        public static final int match_parent=0x7f050015;
-        public static final int menu_Add=0x7f0500a6;
-        public static final int menu_settings=0x7f0500a5;
-        public static final int minor=0x7f050026;
-        public static final int moderate=0x7f05007d;
-        public static final int monochrome=0x7f050023;
-        public static final int none=0x7f050004;
-        public static final int normal=0x7f050009;
-        public static final int onroad=0x7f05003e;
-        public static final int other=0x7f050047;
-        public static final int othertext=0x7f050048;
-        public static final int pager=0x7f050041;
-        public static final int production=0x7f05000f;
-        public static final int progressBar1=0x7f05009c;
-        public static final int progressBar2=0x7f0500a0;
-        public static final int quickContactBadge1=0x7f05009e;
-        public static final int quickContactBadge2=0x7f05009f;
-        public static final int radioButton1=0x7f05005d;
-        public static final int radioButton2=0x7f05005c;
-        public static final int radioButton3=0x7f05005b;
-        public static final int reportDate=0x7f050051;
-        public static final int reportField=0x7f050050;
-        public static final int reportImage=0x7f05004f;
-        public static final int reportTime=0x7f050052;
-        public static final int right=0x7f050001;
-        public static final int rmap=0x7f05006f;
-        public static final int sandbox=0x7f050011;
-        public static final int satellite=0x7f05000a;
-        public static final int search=0x7f0500aa;
-        public static final int searchView_ParentControl_SearchDriverUsername=0x7f05004a;
-        public static final int selected_view=0x7f050005;
-        public static final int selectionDetails=0x7f050014;
-        public static final int slide=0x7f050024;
-        public static final int slidingmenumain=0x7f0500a1;
-        public static final int spinner1=0x7f05009d;
-        public static final int spr_place_type=0x7f050042;
-        public static final int standstill=0x7f05007f;
-        public static final int strict_sandbox=0x7f050012;
-        public static final int submit=0x7f050080;
-        public static final int swtEnableNearbyPOI=0x7f050075;
-        public static final int swtEnableOverspeedAlert=0x7f050076;
-        public static final int swtEnableReports=0x7f050073;
-        public static final int swtEnableVoiceAlert=0x7f050079;
-        public static final int terrain=0x7f05000b;
-        public static final int test=0x7f050010;
-        public static final int text=0x7f0500a3;
-        public static final int text1=0x7f0500a4;
-        public static final int textView1=0x7f050029;
-        public static final int textView2=0x7f05002a;
-        public static final int textView3=0x7f050085;
-        public static final int textView4=0x7f050086;
-        public static final int textViewDes=0x7f050060;
-        public static final int textViewDescription=0x7f050062;
-        public static final int textViewDialogTitle=0x7f050089;
-        public static final int textViewEmail=0x7f050032;
-        public static final int textViewForgot=0x7f05008e;
-        public static final int textViewMapNotice=0x7f05002d;
-        public static final int textViewN=0x7f050061;
-        public static final int textViewName=0x7f05005e;
-        public static final int textViewPoint=0x7f050046;
-        public static final int textViewProfileUsername=0x7f05006c;
-        public static final int textViewStatus=0x7f050033;
-        public static final int textViewT=0x7f050064;
-        public static final int textViewType=0x7f05005f;
-        public static final int textViewUsername=0x7f050031;
-        public static final int textView_ParentControl_AddDriverUserEmail=0x7f05004d;
-        public static final int textView_ParentControl_AddDriverUsername=0x7f05004e;
-        public static final int traffic=0x7f050083;
-        public static final int txtDailyRoute=0x7f05009a;
-        public static final int txtEnableNearbyPOI=0x7f050074;
-        public static final int txtEnableOverspeedAlert=0x7f050077;
-        public static final int txtEnableReports=0x7f050072;
-        public static final int txtEnableVoiceAlert=0x7f050078;
-        public static final int txtMap=0x7f050099;
-        public static final int txtParentMonitoring=0x7f050094;
-        public static final int txtSelectedLanguage=0x7f05007b;
-        public static final int txtTraffic=0x7f050098;
-        public static final int view=0x7f050084;
-        public static final int wrap_content=0x7f050016;
+        public static final int EditTextEmailReg=0x7f07008a;
+        public static final int TextView01=0x7f070037;
+        public static final int accident=0x7f07007b;
+        public static final int accidenttext=0x7f070027;
+        public static final int action_settings=0x7f070099;
+        public static final int addDriver=0x7f07009b;
+        public static final int addJourney=0x7f07009a;
+        public static final int adjust_height=0x7f070003;
+        public static final int adjust_width=0x7f070002;
+        public static final int book_now=0x7f070017;
+        public static final int btnChange=0x7f070073;
+        public static final int btn_find=0x7f070047;
+        public static final int button1=0x7f070028;
+        public static final int button2=0x7f070064;
+        public static final int button3=0x7f070066;
+        public static final int button4=0x7f070067;
+        public static final int buttonAddFav=0x7f070041;
+        public static final int buttonReqEvent=0x7f07003b;
+        public static final int buttonSend=0x7f070080;
+        public static final int buttonSubmitAddFav=0x7f07002b;
+        public static final int buttonViewReport=0x7f070034;
+        public static final int button_AddDriver=0x7f070050;
+        public static final int buyButton=0x7f07000e;
+        public static final int buy_now=0x7f070016;
+        public static final int buy_with=0x7f070012;
+        public static final int buy_with_google=0x7f070015;
+        public static final int cast_notification_id=0x7f070000;
+        public static final int classic=0x7f07001c;
+        public static final int comment=0x7f070076;
+        public static final int construction=0x7f070043;
+        public static final int deleteDriver=0x7f070083;
+        public static final int donate_with=0x7f070014;
+        public static final int donate_with_google=0x7f070018;
+        public static final int driverList=0x7f070058;
+        public static final int driverName=0x7f070082;
+        public static final int editText1=0x7f070068;
+        public static final int editText2=0x7f070065;
+        public static final int editText3=0x7f070069;
+        public static final int editTextAddFavName=0x7f07002c;
+        public static final int editTextEmailEdit=0x7f07005d;
+        public static final int editTextEnterEmail=0x7f07007f;
+        public static final int editTextFavTitle=0x7f07003d;
+        public static final int editTextOldPassConfirm=0x7f07005b;
+        public static final int editTextPasswordEdit=0x7f07005c;
+        public static final int editTextPasswordLogin=0x7f070085;
+        public static final int editTextPasswordReg=0x7f070089;
+        public static final int editTextUsernameEdit=0x7f07005a;
+        public static final int editTextUsernameLogin=0x7f070084;
+        public static final int editTextUsernameReg=0x7f070088;
+        public static final int fullscreen=0x7f070023;
+        public static final int google_wallet_classic=0x7f070019;
+        public static final int google_wallet_grayscale=0x7f07001a;
+        public static final int google_wallet_monochrome=0x7f07001b;
+        public static final int grayscale=0x7f07001d;
+        public static final int hazard=0x7f07007c;
+        public static final int hazardtext=0x7f070044;
+        public static final int heavy=0x7f070078;
+        public static final int holo_dark=0x7f070008;
+        public static final int holo_light=0x7f070009;
+        public static final int hybrid=0x7f070007;
+        public static final int image=0x7f070095;
+        public static final int imageButtonLogin=0x7f070087;
+        public static final int imageButtonRegister=0x7f07008b;
+        public static final int imageView1=0x7f070036;
+        public static final int imageViewAddFav=0x7f07003f;
+        public static final int imageViewEditIcon=0x7f07005f;
+        public static final int imageViewEditImage=0x7f070059;
+        public static final int imageViewGetLocation=0x7f07003e;
+        public static final int imageViewLogout=0x7f070062;
+        public static final int imageViewProfile=0x7f070030;
+        public static final int imageViewProfileImage=0x7f070061;
+        public static final int imageViewSaveChanges=0x7f07005e;
+        public static final int imageView_ParentControl_ProfilePicture=0x7f07004f;
+        public static final int imgDailyRoute=0x7f07008f;
+        public static final int imgMap=0x7f070093;
+        public static final int imgParentMonitoring=0x7f07008d;
+        public static final int imgTraffic=0x7f07008e;
+        public static final int left=0x7f070020;
+        public static final int list=0x7f07002f;
+        public static final int listTitle=0x7f070057;
+        public static final int listView1=0x7f070075;
+        public static final int listView2=0x7f07003c;
+        public static final int listViewCategoryEvents=0x7f07003a;
+        public static final int listViewFavorites=0x7f070040;
+        public static final int listView_ParentControl_DriversList=0x7f07004d;
+        public static final int logo_only=0x7f070013;
+        public static final int major=0x7f070025;
+        public static final int map=0x7f070048;
+        public static final int mapAddFav=0x7f07002e;
+        public static final int mapViewPoint=0x7f070049;
+        public static final int margin=0x7f070022;
+        public static final int match_parent=0x7f070010;
+        public static final int menu_settings=0x7f070098;
+        public static final int minor=0x7f070026;
+        public static final int moderate=0x7f070077;
+        public static final int monochrome=0x7f07001e;
+        public static final int none=0x7f070001;
+        public static final int normal=0x7f070004;
+        public static final int onroad=0x7f070042;
+        public static final int other=0x7f07004b;
+        public static final int othertext=0x7f07004c;
+        public static final int pager=0x7f070045;
+        public static final int production=0x7f07000a;
+        public static final int reportDate=0x7f070055;
+        public static final int reportField=0x7f070054;
+        public static final int reportImage=0x7f070053;
+        public static final int reportTime=0x7f070056;
+        public static final int right=0x7f070021;
+        public static final int rmap=0x7f070063;
+        public static final int sandbox=0x7f07000c;
+        public static final int satellite=0x7f070005;
+        public static final int search=0x7f07009c;
+        public static final int searchView_ParentControl_SearchDriverUsername=0x7f07004e;
+        public static final int selected_view=0x7f070024;
+        public static final int selectionDetails=0x7f07000f;
+        public static final int setPointMap=0x7f07006a;
+        public static final int slide=0x7f07001f;
+        public static final int slidingmenumain=0x7f070094;
+        public static final int spr_place_type=0x7f070046;
+        public static final int standstill=0x7f070079;
+        public static final int strict_sandbox=0x7f07000d;
+        public static final int submit=0x7f07007a;
+        public static final int swtEnableNearbyPOI=0x7f07006e;
+        public static final int swtEnableOverspeedAlert=0x7f07006f;
+        public static final int swtEnableReports=0x7f07006c;
+        public static final int swtEnableVoiceAlert=0x7f070072;
+        public static final int terrain=0x7f070006;
+        public static final int test=0x7f07000b;
+        public static final int text=0x7f070096;
+        public static final int text1=0x7f070097;
+        public static final int textView1=0x7f070029;
+        public static final int textView2=0x7f07002a;
+        public static final int textView3=0x7f070035;
+        public static final int textView4=0x7f070038;
+        public static final int textView5=0x7f070039;
+        public static final int textViewDialogTitle=0x7f070081;
+        public static final int textViewEmail=0x7f070032;
+        public static final int textViewForgot=0x7f070086;
+        public static final int textViewMapNotice=0x7f07002d;
+        public static final int textViewPoint=0x7f07004a;
+        public static final int textViewProfileUsername=0x7f070060;
+        public static final int textViewStatus=0x7f070033;
+        public static final int textViewUsername=0x7f070031;
+        public static final int textView_ParentControl_AddDriverUserEmail=0x7f070051;
+        public static final int textView_ParentControl_AddDriverUsername=0x7f070052;
+        public static final int traffic=0x7f07007d;
+        public static final int txtDailyRoute=0x7f070092;
+        public static final int txtEnableNearbyPOI=0x7f07006d;
+        public static final int txtEnableOverspeedAlert=0x7f070070;
+        public static final int txtEnableReports=0x7f07006b;
+        public static final int txtEnableVoiceAlert=0x7f070071;
+        public static final int txtMap=0x7f070091;
+        public static final int txtParentMonitoring=0x7f07008c;
+        public static final int txtSelectedLanguage=0x7f070074;
+        public static final int txtTraffic=0x7f070090;
+        public static final int view=0x7f07007e;
+        public static final int wrap_content=0x7f070011;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f090000;
@@ -884,30 +878,26 @@ containing a value of this type.
         public static final int activity_parent_monitoring__pairing__driver_pairing=0x7f030010;
         public static final int activity_parent_monitoring_report=0x7f030011;
         public static final int activity_parental_monitoring=0x7f030012;
-        public static final int activity_poi=0x7f030013;
-        public static final int activity_poi1=0x7f030014;
-        public static final int activity_poi2=0x7f030015;
-        public static final int activity_poi3_detail=0x7f030016;
-        public static final int activity_profile_edit=0x7f030017;
-        public static final int activity_profile_home=0x7f030018;
-        public static final int activity_report_details=0x7f030019;
-        public static final int activity_request_event=0x7f03001a;
-        public static final int activity_settings=0x7f03001b;
-        public static final int activity_sliding=0x7f03001c;
-        public static final int activity_splash_screen=0x7f03001d;
-        public static final int activity_traffic_jam=0x7f03001e;
-        public static final int activity_traffic_main=0x7f03001f;
-        public static final int activity_view_report=0x7f030020;
-        public static final int dialog_forgotpassword=0x7f030021;
-        public static final int driver_layout=0x7f030022;
-        public static final int driver_list_row=0x7f030023;
-        public static final int fragment_login=0x7f030024;
-        public static final int fragment_register=0x7f030025;
-        public static final int home=0x7f030026;
-        public static final int left_menu=0x7f030027;
-        public static final int list_row=0x7f030028;
-        public static final int slidingmenumain=0x7f030029;
-        public static final int tabitem=0x7f03002a;
+        public static final int activity_profile_edit=0x7f030013;
+        public static final int activity_profile_home=0x7f030014;
+        public static final int activity_report_details=0x7f030015;
+        public static final int activity_request_event=0x7f030016;
+        public static final int activity_set_location=0x7f030017;
+        public static final int activity_settings=0x7f030018;
+        public static final int activity_sliding=0x7f030019;
+        public static final int activity_splash_screen=0x7f03001a;
+        public static final int activity_traffic_jam=0x7f03001b;
+        public static final int activity_traffic_main=0x7f03001c;
+        public static final int activity_view_report=0x7f03001d;
+        public static final int dialog_forgotpassword=0x7f03001e;
+        public static final int driver_layout=0x7f03001f;
+        public static final int driver_list_row=0x7f030020;
+        public static final int fragment_login=0x7f030021;
+        public static final int fragment_register=0x7f030022;
+        public static final int home=0x7f030023;
+        public static final int list_row=0x7f030024;
+        public static final int slidingmenumain=0x7f030025;
+        public static final int tabitem=0x7f030026;
     }
     public static final class menu {
         public static final int activity__accident_report=0x7f0c0000;
@@ -917,247 +907,244 @@ containing a value of this type.
         public static final int activity_main=0x7f0c0004;
         public static final int activity_other=0x7f0c0005;
         public static final int activity_parent_monitoring_report=0x7f0c0006;
-        public static final int activity_poi=0x7f0c0007;
-        public static final int activity_poi1=0x7f0c0008;
-        public static final int activity_poi2=0x7f0c0009;
-        public static final int activity_poi3=0x7f0c000a;
-        public static final int activity_profile_edit=0x7f0c000b;
-        public static final int activity_profile_edit_temp=0x7f0c000c;
-        public static final int activity_profile_home=0x7f0c000d;
-        public static final int activity_report_details=0x7f0c000e;
-        public static final int activity_splash_screen=0x7f0c000f;
-        public static final int activity_traffic_jam=0x7f0c0010;
-        public static final int activity_traffic_main=0x7f0c0011;
-        public static final int activity_view_report=0x7f0c0012;
-        public static final int add_favorite=0x7f0c0013;
-        public static final int driver_profile=0x7f0c0014;
-        public static final int event_info_view=0x7f0c0015;
-        public static final int events_categories_view=0x7f0c0016;
-        public static final int events_view=0x7f0c0017;
-        public static final int favorites_view=0x7f0c0018;
-        public static final int main=0x7f0c0019;
-        public static final int map_point=0x7f0c001a;
-        public static final int paranet_monitoring=0x7f0c001b;
-        public static final int parent_monicoting__pairing__driver_pairing=0x7f0c001c;
-        public static final int parent_monitoring__pairing=0x7f0c001d;
-        public static final int point_on_map_avtivity=0x7f0c001e;
-        public static final int request_event=0x7f0c001f;
+        public static final int activity_profile_edit=0x7f0c0007;
+        public static final int activity_profile_edit_temp=0x7f0c0008;
+        public static final int activity_profile_home=0x7f0c0009;
+        public static final int activity_report_details=0x7f0c000a;
+        public static final int activity_splash_screen=0x7f0c000b;
+        public static final int activity_traffic_jam=0x7f0c000c;
+        public static final int activity_traffic_main=0x7f0c000d;
+        public static final int activity_view_report=0x7f0c000e;
+        public static final int add_favorite=0x7f0c000f;
+        public static final int driver_profile=0x7f0c0010;
+        public static final int event_info_view=0x7f0c0011;
+        public static final int events_categories_view=0x7f0c0012;
+        public static final int events_view=0x7f0c0013;
+        public static final int favorites_view=0x7f0c0014;
+        public static final int main=0x7f0c0015;
+        public static final int map_point=0x7f0c0016;
+        public static final int paranet_monitoring=0x7f0c0017;
+        public static final int parent_monicoting__pairing__driver_pairing=0x7f0c0018;
+        public static final int parent_monitoring__pairing=0x7f0c0019;
+        public static final int point_on_map_avtivity=0x7f0c001a;
+        public static final int request_event=0x7f0c001b;
+        public static final int set_location=0x7f0c001c;
     }
     public static final class raw {
         public static final int gtm_analytics=0x7f040000;
     }
     public static final class string {
-        public static final int FPdialogTitle=0x7f070038;
-        public static final int TabLogin=0x7f070033;
-        public static final int TabRegister=0x7f070032;
-        public static final int accept=0x7f070002;
-        public static final int action_settings=0x7f07005b;
-        public static final int add_driver=0x7f07005c;
-        public static final int add_journey=0x7f070064;
-        public static final int app_name=0x7f07002c;
+        public static final int FPdialogTitle=0x7f060038;
+        public static final int TabLogin=0x7f060033;
+        public static final int TabRegister=0x7f060032;
+        public static final int accept=0x7f060002;
+        public static final int action_settings=0x7f06005b;
+        public static final int add_driver=0x7f06005c;
+        public static final int add_journey=0x7f060064;
+        public static final int app_name=0x7f06002c;
         /**  Brand name for Facebook [DO NOT TRANSLATE] 
          */
-        public static final int auth_google_play_services_client_facebook_display_name=0x7f070007;
+        public static final int auth_google_play_services_client_facebook_display_name=0x7f060007;
         /**  Brand name for Google [DO NOT TRANSLATE] 
          */
-        public static final int auth_google_play_services_client_google_display_name=0x7f070006;
-        public static final int bAddFav=0x7f070066;
-        public static final int bCancel=0x7f070036;
-        public static final int bReqEvent=0x7f07006f;
-        public static final int bSave=0x7f07003b;
-        public static final int bSend=0x7f070037;
-        public static final int bSendToMap=0x7f070072;
-        public static final int bSubmitAddFav=0x7f070069;
-        public static final int btn_change_language=0x7f070047;
+        public static final int auth_google_play_services_client_google_display_name=0x7f060006;
+        public static final int bAddFav=0x7f060066;
+        public static final int bCancel=0x7f060036;
+        public static final int bReqEvent=0x7f06006f;
+        public static final int bSave=0x7f06003b;
+        public static final int bSend=0x7f060037;
+        public static final int bSendToMap=0x7f060072;
+        public static final int bSubmitAddFav=0x7f060069;
+        public static final int btn_change_language=0x7f060047;
         /**  Message of the notification to indicate an active cast display connection.  [CHAR LIMIT=80] NOTE: Same text as msgid="794424023757290105" 
          */
-        public static final int cast_notification_connected_message=0x7f070009;
+        public static final int cast_notification_connected_message=0x7f06000b;
         /**  Message of the notification to indicate the process of connecting to a cast display.  [CHAR LIMIT=80] NOTE: Same text as msgid="5435169294190995247" 
          */
-        public static final int cast_notification_connecting_message=0x7f070008;
+        public static final int cast_notification_connecting_message=0x7f06000a;
         /**  Label of a button to disconnect an active cast display connection.  [CHAR LIMIT=25] NOTE: Same text as msgid="9024230238785261495" 
          */
-        public static final int cast_notification_disconnect=0x7f07000a;
+        public static final int cast_notification_disconnect=0x7f06000c;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
-        public static final int common_android_wear_notification_needs_update_text=0x7f07000d;
+        public static final int common_android_wear_notification_needs_update_text=0x7f06000f;
         /**  Message in confirmation dialog informing user that they need to update
         the Android Wear app [CHAR LIMIT=NONE] 
          */
-        public static final int common_android_wear_update_text=0x7f07001a;
+        public static final int common_android_wear_update_text=0x7f06001c;
         /**  Title of confirmation dialog informing user that they need to update
         the Android Wear app (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_android_wear_update_title=0x7f070018;
+        public static final int common_android_wear_update_title=0x7f06001a;
         /**  Message in confirmation dialog informing the user that one of the APIs they attepmt to access is not available. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_api_unavailable_text=0x7f070028;
+        public static final int common_google_play_services_api_unavailable_text=0x7f060028;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_button=0x7f070016;
+        public static final int common_google_play_services_enable_button=0x7f060018;
         /**  Message in confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_enable_text=0x7f070015;
+        public static final int common_google_play_services_enable_text=0x7f060017;
         /**  Title of confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_title=0x7f070014;
+        public static final int common_google_play_services_enable_title=0x7f060016;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int common_google_play_services_error_notification_requested_by_msg=0x7f07000f;
+        public static final int common_google_play_services_error_notification_requested_by_msg=0x7f060011;
         /**  Button in confirmation dialog for installing Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_button=0x7f070013;
+        public static final int common_google_play_services_install_button=0x7f060015;
         /**  (For phones) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_phone=0x7f070011;
+        public static final int common_google_play_services_install_text_phone=0x7f060013;
         /**  (For tablets) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_tablet=0x7f070012;
+        public static final int common_google_play_services_install_text_tablet=0x7f060014;
         /**  Title of confirmation dialog informing user that they need to install
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_title=0x7f070010;
+        public static final int common_google_play_services_install_title=0x7f060012;
         /**  Message in confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_invalid_account_text=0x7f070020;
+        public static final int common_google_play_services_invalid_account_text=0x7f060022;
         /**  Title of confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_invalid_account_title=0x7f07001f;
+        public static final int common_google_play_services_invalid_account_title=0x7f060021;
         /**   Title for notification shown when GooglePlayServices needs to be enabled for an
         application to work. [CHAR LIMIT=70] 
          */
-        public static final int common_google_play_services_needs_enabling_title=0x7f07000e;
+        public static final int common_google_play_services_needs_enabling_title=0x7f060010;
         /**  Message in confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_network_error_text=0x7f07001e;
+        public static final int common_google_play_services_network_error_text=0x7f060020;
         /**  Title of confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_network_error_title=0x7f07001d;
+        public static final int common_google_play_services_network_error_title=0x7f06001f;
         /**   Title for notification shown when GooglePlayServices needs to be updated for an
         application to work. [CHAR LIMIT=70] 
          */
-        public static final int common_google_play_services_notification_needs_update_title=0x7f07000c;
+        public static final int common_google_play_services_notification_needs_update_title=0x7f06000e;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int common_google_play_services_notification_ticker=0x7f07000b;
+        public static final int common_google_play_services_notification_ticker=0x7f06000d;
         /**  Message in confirmation dialog informing the user that the account could not be signed in. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_sign_in_failed_text=0x7f07002a;
+        public static final int common_google_play_services_sign_in_failed_text=0x7f06002a;
         /**  Title of confirmation dialog informing the user that the account could not be signed in. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_sign_in_failed_title=0x7f070029;
+        public static final int common_google_play_services_sign_in_failed_title=0x7f060029;
         /**  Message in confirmation dialog informing user there is an unknown issue in Google Play
         services [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unknown_issue=0x7f070021;
+        public static final int common_google_play_services_unknown_issue=0x7f060023;
         /**  Message in confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unsupported_text=0x7f070023;
+        public static final int common_google_play_services_unsupported_text=0x7f060025;
         /**  Title of confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_unsupported_title=0x7f070022;
+        public static final int common_google_play_services_unsupported_title=0x7f060024;
         /**  Button in confirmation dialog for updating Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_button=0x7f070024;
+        public static final int common_google_play_services_update_button=0x7f060026;
         /**  Message in confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_update_text=0x7f070019;
+        public static final int common_google_play_services_update_text=0x7f06001b;
         /**  Title of confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_title=0x7f070017;
+        public static final int common_google_play_services_update_title=0x7f060019;
         /**  Message in confirmation dialog informing user that Google Play services is currently
         updating [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_updating_text=0x7f07001c;
+        public static final int common_google_play_services_updating_text=0x7f06001e;
         /**  Title of confirmation dialog informing user that Google Play services is currently
         updating [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_updating_title=0x7f07001b;
+        public static final int common_google_play_services_updating_title=0x7f06001d;
         /**  Label for an action to open a notifications content on the phone [CHAR LIMIT=25] 
          */
-        public static final int common_open_on_phone=0x7f070027;
+        public static final int common_open_on_phone=0x7f060027;
         /**  Sign-in button text [CHAR LIMIT=15] 
          */
-        public static final int common_signin_button_text=0x7f070025;
+        public static final int common_signin_button_text=0x7f060008;
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
-        public static final int common_signin_button_text_long=0x7f070026;
-        public static final int create_calendar_message=0x7f070005;
-        public static final int create_calendar_title=0x7f070004;
-        public static final int decline=0x7f070003;
-        public static final int delete_driver_dialog_message=0x7f07005e;
-        public static final int delete_driver_dialog_negative_button=0x7f070061;
-        public static final int delete_driver_dialog_positive_button=0x7f070060;
-        public static final int delete_driver_dialog_title=0x7f07005f;
-        public static final int delete_driver_toast_message=0x7f070062;
-        public static final int dialogMessageExit=0x7f07004f;
-        public static final int dialogTitleExit=0x7f070050;
-        public static final int empty_driver_list_title=0x7f07005d;
-        public static final int enable_nearby_poi=0x7f070043;
-        public static final int enable_overspeed_alert=0x7f070044;
-        public static final int enable_reports=0x7f070042;
-        public static final int enable_voice_alert=0x7f070045;
-        public static final int etAddFavName=0x7f070068;
-        public static final int etEmail=0x7f070031;
-        public static final int etEnterEmail=0x7f070035;
-        public static final int etFavoriteTitle=0x7f070040;
-        public static final int etNewPassword=0x7f07003d;
-        public static final int etOldPassword=0x7f07003e;
-        public static final int etPassword=0x7f070030;
-        public static final int etUsername=0x7f07002f;
-        public static final int hello_world=0x7f07002d;
-        public static final int lblBeginningAt=0x7f07004a;
-        public static final int lblDestination=0x7f07004d;
-        public static final int lblRouteName=0x7f07004c;
-        public static final int lblRouteTime=0x7f07004b;
-        public static final int lblThisDestination=0x7f07004e;
-        public static final int menu_settings=0x7f07002e;
-        public static final int no_language_selected=0x7f070046;
-        public static final int search_title=0x7f070063;
-        public static final int store_picture_message=0x7f070001;
-        public static final int store_picture_title=0x7f070000;
-        public static final int title_activity_action_bar=0x7f070049;
-        public static final int title_activity_activity__accident_report=0x7f070051;
-        public static final int title_activity_activity__report_details=0x7f070056;
-        public static final int title_activity_activity__traffic_jam=0x7f070052;
-        public static final int title_activity_activity__view_report=0x7f070055;
-        public static final int title_activity_activity_hazard=0x7f070053;
-        public static final int title_activity_activity_other=0x7f070054;
-        public static final int title_activity_add_favorite=0x7f070067;
-        public static final int title_activity_event_info_view=0x7f070071;
-        public static final int title_activity_events_categories_view=0x7f070070;
-        public static final int title_activity_events_view=0x7f07006e;
-        public static final int title_activity_favorites=0x7f07003f;
-        public static final int title_activity_favorites_view=0x7f070065;
-        public static final int title_activity_map_point=0x7f07006d;
-        public static final int title_activity_poi1=0x7f070058;
-        public static final int title_activity_poi2=0x7f070059;
-        public static final int title_activity_poi3=0x7f07005a;
-        public static final int title_activity_point_on_map_avtivity=0x7f07006b;
-        public static final int title_activity_profile_edit=0x7f07003c;
-        public static final int title_activity_request_event=0x7f070073;
-        public static final int title_activity_splash_screen=0x7f070041;
-        public static final int title_activity_t3_map=0x7f07006c;
-        public static final int title_activity_temp1=0x7f070039;
-        public static final int title_activity_traffic_main=0x7f070057;
-        public static final int tvFavorites=0x7f07003a;
-        public static final int tvForgotPassword=0x7f070034;
-        public static final int tvMapNotice=0x7f07006a;
+        public static final int common_signin_button_text_long=0x7f060009;
+        public static final int create_calendar_message=0x7f060005;
+        public static final int create_calendar_title=0x7f060004;
+        public static final int decline=0x7f060003;
+        public static final int delete_driver_dialog_message=0x7f06005e;
+        public static final int delete_driver_dialog_negative_button=0x7f060061;
+        public static final int delete_driver_dialog_positive_button=0x7f060060;
+        public static final int delete_driver_dialog_title=0x7f06005f;
+        public static final int delete_driver_toast_message=0x7f060062;
+        public static final int dialogMessageExit=0x7f06004f;
+        public static final int dialogTitleExit=0x7f060050;
+        public static final int empty_driver_list_title=0x7f06005d;
+        public static final int enable_nearby_poi=0x7f060043;
+        public static final int enable_overspeed_alert=0x7f060044;
+        public static final int enable_reports=0x7f060042;
+        public static final int enable_voice_alert=0x7f060045;
+        public static final int etAddFavName=0x7f060068;
+        public static final int etEmail=0x7f060031;
+        public static final int etEnterEmail=0x7f060035;
+        public static final int etFavoriteTitle=0x7f060040;
+        public static final int etNewPassword=0x7f06003d;
+        public static final int etOldPassword=0x7f06003e;
+        public static final int etPassword=0x7f060030;
+        public static final int etUsername=0x7f06002f;
+        public static final int hello_world=0x7f06002d;
+        public static final int lblBeginningAt=0x7f06004a;
+        public static final int lblDestination=0x7f06004d;
+        public static final int lblRouteName=0x7f06004c;
+        public static final int lblRouteTime=0x7f06004b;
+        public static final int lblThisDestination=0x7f06004e;
+        public static final int menu_settings=0x7f06002e;
+        public static final int no_language_selected=0x7f060046;
+        public static final int search_title=0x7f060063;
+        public static final int store_picture_message=0x7f060001;
+        public static final int store_picture_title=0x7f060000;
+        public static final int title_activity_action_bar=0x7f060049;
+        public static final int title_activity_activity__accident_report=0x7f060051;
+        public static final int title_activity_activity__report_details=0x7f060056;
+        public static final int title_activity_activity__traffic_jam=0x7f060052;
+        public static final int title_activity_activity__view_report=0x7f060055;
+        public static final int title_activity_activity_hazard=0x7f060053;
+        public static final int title_activity_activity_other=0x7f060054;
+        public static final int title_activity_add_favorite=0x7f060067;
+        public static final int title_activity_event_info_view=0x7f060071;
+        public static final int title_activity_events_categories_view=0x7f060070;
+        public static final int title_activity_events_view=0x7f06006e;
+        public static final int title_activity_favorites=0x7f06003f;
+        public static final int title_activity_favorites_view=0x7f060065;
+        public static final int title_activity_map_point=0x7f06006d;
+        public static final int title_activity_poi1=0x7f060058;
+        public static final int title_activity_poi2=0x7f060059;
+        public static final int title_activity_poi3=0x7f06005a;
+        public static final int title_activity_point_on_map_avtivity=0x7f06006b;
+        public static final int title_activity_profile_edit=0x7f06003c;
+        public static final int title_activity_request_event=0x7f060073;
+        public static final int title_activity_splash_screen=0x7f060041;
+        public static final int title_activity_t3_map=0x7f06006c;
+        public static final int title_activity_temp1=0x7f060039;
+        public static final int title_activity_traffic_main=0x7f060057;
+        public static final int tvFavorites=0x7f06003a;
+        public static final int tvForgotPassword=0x7f060034;
+        public static final int tvMapNotice=0x7f06006a;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
  Text on a button that allows a user to make a payment with Google Wallet
          [CHAR LIMIT=30] 
          */
-        public static final int wallet_buy_button_place_holder=0x7f07002b;
-        public static final int your_daily_routes=0x7f070048;
+        public static final int wallet_buy_button_place_holder=0x7f06002b;
+        public static final int your_daily_routes=0x7f060048;
     }
     public static final class style {
         /** 
@@ -1180,43 +1167,21 @@ containing a value of this type.
         res/values-v11/styles.xml on API 14+ devices.
     
  API 14 theme customizations can go here. 
-
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060005;
+        public static final int AppBaseTheme=0x7f050005;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
- Application theme. 
          */
-        public static final int AppTheme=0x7f060006;
-        public static final int Theme_IAPTheme=0x7f060000;
-        public static final int WalletFragmentDefaultButtonTextAppearance=0x7f060003;
-        public static final int WalletFragmentDefaultDetailsHeaderTextAppearance=0x7f060002;
-        public static final int WalletFragmentDefaultDetailsTextAppearance=0x7f060001;
+        public static final int AppTheme=0x7f050006;
+        public static final int Theme_IAPTheme=0x7f050000;
+        public static final int WalletFragmentDefaultButtonTextAppearance=0x7f050003;
+        public static final int WalletFragmentDefaultDetailsHeaderTextAppearance=0x7f050002;
+        public static final int WalletFragmentDefaultDetailsTextAppearance=0x7f050001;
         /** 
          Default style of the wallet fragment that will be used if not set explicitly
          when fragment is created
     
          */
-        public static final int WalletFragmentDefaultStyle=0x7f060004;
+        public static final int WalletFragmentDefaultStyle=0x7f050004;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
@@ -1236,14 +1201,14 @@ containing a value of this type.
            @see #AdsAttrs_adUnitId
          */
         public static final int[] AdsAttrs = {
-            0x7f01000e, 0x7f01000f, 0x7f010010
+            0x7f010000, 0x7f010001, 0x7f010002
         };
         /**
           <p>
           @attr description
           
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
-    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
+    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, FLUID or
     &lt;width&gt;x&lt;height&gt;.
     
 
@@ -1264,7 +1229,7 @@ containing a value of this type.
           
     A comma-separated list of the supported ad sizes. The sizes must be one of
     BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
-    WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
+    WIDE_SKYSCRAPER, FLUID or &lt;width&gt;x&lt;height&gt;.
     
 
 
@@ -1305,7 +1270,7 @@ containing a value of this type.
            @see #CustomWalletTheme_windowTransitionStyle
          */
         public static final int[] CustomWalletTheme = {
-            0x7f010033
+            0x7f010026
         };
         /**
           <p>
@@ -1345,7 +1310,7 @@ containing a value of this type.
            @see #LoadingImageView_imageAspectRatioAdjust
          */
         public static final int[] LoadingImageView = {
-            0x7f010011, 0x7f010012, 0x7f010013
+            0x7f010003, 0x7f010004, 0x7f010005
         };
         /**
           <p>
@@ -1412,6 +1377,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MapAttrs_ambientEnabled com.pifss.myway:ambientEnabled}</code></td><td></td></tr>
            <tr><td><code>{@link #MapAttrs_cameraBearing com.pifss.myway:cameraBearing}</code></td><td></td></tr>
            <tr><td><code>{@link #MapAttrs_cameraTargetLat com.pifss.myway:cameraTargetLat}</code></td><td></td></tr>
            <tr><td><code>{@link #MapAttrs_cameraTargetLng com.pifss.myway:cameraTargetLng}</code></td><td></td></tr>
@@ -1429,6 +1395,7 @@ containing a value of this type.
            <tr><td><code>{@link #MapAttrs_useViewLifecycle com.pifss.myway:useViewLifecycle}</code></td><td></td></tr>
            <tr><td><code>{@link #MapAttrs_zOrderOnTop com.pifss.myway:zOrderOnTop}</code></td><td></td></tr>
            </table>
+           @see #MapAttrs_ambientEnabled
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
            @see #MapAttrs_cameraTargetLng
@@ -1447,11 +1414,26 @@ containing a value of this type.
            @see #MapAttrs_zOrderOnTop
          */
         public static final int[] MapAttrs = {
-            0x7f010014, 0x7f010015, 0x7f010016, 0x7f010017,
-            0x7f010018, 0x7f010019, 0x7f01001a, 0x7f01001b,
-            0x7f01001c, 0x7f01001d, 0x7f01001e, 0x7f01001f,
-            0x7f010020, 0x7f010021, 0x7f010022, 0x7f010023
+            0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009,
+            0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d,
+            0x7f01000e, 0x7f01000f, 0x7f010010, 0x7f010011,
+            0x7f010012, 0x7f010013, 0x7f010014, 0x7f010015,
+            0x7f010016
         };
+        /**
+          <p>This symbol is the offset where the {@link com.pifss.myway.R.attr#ambientEnabled}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.pifss.myway:ambientEnabled
+        */
+        public static final int MapAttrs_ambientEnabled = 16;
         /**
           <p>This symbol is the offset where the {@link com.pifss.myway.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -1719,10 +1701,10 @@ containing a value of this type.
            @see #SlidingMenu_viewBehind
          */
         public static final int[] SlidingMenu = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
-            0x7f01000c, 0x7f01000d
+            0x7f010027, 0x7f010028, 0x7f010029, 0x7f01002a,
+            0x7f01002b, 0x7f01002c, 0x7f01002d, 0x7f01002e,
+            0x7f01002f, 0x7f010030, 0x7f010031, 0x7f010032,
+            0x7f010033, 0x7f010034
         };
         /**
           <p>This symbol is the offset where the {@link com.pifss.myway.R.attr#behindOffset}
@@ -1938,7 +1920,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #WalletFragmentOptions_fragmentStyle
          */
         public static final int[] WalletFragmentOptions = {
-            0x7f010024, 0x7f010025, 0x7f010026, 0x7f010027
+            0x7f010017, 0x7f010018, 0x7f010019, 0x7f01001a
         };
         /**
           <p>
@@ -2043,9 +2025,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #WalletFragmentStyle_maskedWalletDetailsTextAppearance
          */
         public static final int[] WalletFragmentStyle = {
-            0x7f010028, 0x7f010029, 0x7f01002a, 0x7f01002b,
-            0x7f01002c, 0x7f01002d, 0x7f01002e, 0x7f01002f,
-            0x7f010030, 0x7f010031, 0x7f010032
+            0x7f01001b, 0x7f01001c, 0x7f01001d, 0x7f01001e,
+            0x7f01001f, 0x7f010020, 0x7f010021, 0x7f010022,
+            0x7f010023, 0x7f010024, 0x7f010025
         };
         /**
           <p>

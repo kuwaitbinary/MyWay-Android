@@ -1,6 +1,5 @@
 package com.pifss.myway;
 
-import java.io.Console;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -20,7 +19,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -32,42 +33,44 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class FavoritesViewActivity extends Activity {
-	
-	ArrayList<String> favoritesNames=new ArrayList<String>();
+
+	ArrayList<String> favoritesNames = new ArrayList<String>();
 	ArrayList<Favorite> favoritesList = new ArrayList<Favorite>();
 	ListView lvFavs;
-//	String actionFlag = "view";
-	
+	String actionFlag = "";
+	int favToDelete;
 	public final static String PREF_NAME = "userInformation";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favorites_view);
-		//retrieve the list of favorites
-//		actionFlag = "view";
+		// retrieve the list of favorites
+		// actionFlag = "view";
 		new RetrieveFavsTask().execute();
-		
+
 		Button addFav = (Button) findViewById(R.id.buttonAddFav);
-		
+
 		addFav.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(FavoritesViewActivity.this, AddFavoriteActivity.class);
+				Intent i = new Intent(FavoritesViewActivity.this,
+						AddFavoriteActivity.class);
 				startActivity(i);
-//				actionFlag = "add";
-//				new RetrieveFavsTask().execute();
+				// actionFlag = "add";
+				// new RetrieveFavsTask().execute();
 			}
 		});
-				
-		//use the following line to add the sliding menu to the current page
+
+		// use the following line to add the sliding menu to the current page
 		SlidingUtil.SetSliding(this);
 	}
 
@@ -89,22 +92,21 @@ public class FavoritesViewActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	//to send the user to the home page when pressing the back button
-		@Override
-	    public void onBackPressed() {
-	    	// TODO Auto-generated method stub
-	    	super.onBackPressed();
-	    	Intent i = new Intent(FavoritesViewActivity.this, Home.class);
-			startActivity(i);
-			finish();
-	    }
-	
-	
-	class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
-        
-		ProgressDialog dialog=new ProgressDialog(FavoritesViewActivity.this);
-		
+
+	// to send the user to the home page when pressing the back button
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		Intent i = new Intent(FavoritesViewActivity.this, Home.class);
+		startActivity(i);
+		finish();
+	}
+
+	class RetrieveFavsTask extends AsyncTask<String, Integer, String> {
+
+		ProgressDialog dialog = new ProgressDialog(FavoritesViewActivity.this);
+
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
@@ -113,46 +115,84 @@ public class FavoritesViewActivity extends Activity {
 			dialog.setMessage("Loading....");
 			dialog.show();
 		}
-		
-		
+
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			try {
-				
-				ArrayList<BasicNameValuePair> urlparameters=new ArrayList<BasicNameValuePair>();
-			
-				URI u=new URI("http://mobile.comxa.com/fav/all_favs.json");
-				DefaultHttpClient client=new DefaultHttpClient();
-				
-				HttpPost post = new HttpPost(u);
-						
-					SharedPreferences pref = getSharedPreferences(PREF_NAME, MODE_APPEND);
+				if (actionFlag.equals("delete")) {
+					ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
+
+					URI u = new URI(
+							"http://mobile.comxa.com/fav/delete_fav.json");
+					DefaultHttpClient client = new DefaultHttpClient();
+
+					HttpPost post = new HttpPost(u);
+
+					SharedPreferences pref = getSharedPreferences(PREF_NAME,
+							MODE_APPEND);
 					String userObj = pref.getString("user", "ERROR");
-						String tempUsername = "";
-						JSONObject userJson;
-						try {
-							userJson = new JSONObject(userObj);
-							tempUsername = userJson.getString("username");
-							
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-						
-					urlparameters.add(new BasicNameValuePair("username", tempUsername));
-			
-				
-				post.setEntity(new UrlEncodedFormEntity(urlparameters));
-				
-				HttpResponse response=client.execute(post);
-				HttpEntity entity=response.getEntity();
-			    String data=EntityUtils.toString(entity);
-				
-//			    Log.d("test:", data);
-				return data;
-				
+					String tempUsername = "";
+					JSONObject userJson;
+					try {
+						userJson = new JSONObject(userObj);
+						tempUsername = userJson.getString("username");
+
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					urlparameters.add(new BasicNameValuePair("name", favoritesNames.get(favToDelete)));
+					urlparameters.add(new BasicNameValuePair("username",
+							tempUsername));
+
+					post.setEntity(new UrlEncodedFormEntity(urlparameters));
+
+					HttpResponse response = client.execute(post);
+					HttpEntity entity = response.getEntity();
+					String data = EntityUtils.toString(entity);
+
+					// Log.d("test:", data);
+					favoritesList.clear();
+					favoritesNames.clear();
+					favToDelete = -1;
+					actionFlag = "";
+					return data;
+				} else {
+					ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
+
+					URI u = new URI("http://mobile.comxa.com/fav/all_favs.json");
+					DefaultHttpClient client = new DefaultHttpClient();
+
+					HttpPost post = new HttpPost(u);
+
+					SharedPreferences pref = getSharedPreferences(PREF_NAME,
+							MODE_APPEND);
+					String userObj = pref.getString("user", "ERROR");
+					String tempUsername = "";
+					JSONObject userJson;
+					try {
+						userJson = new JSONObject(userObj);
+						tempUsername = userJson.getString("username");
+
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					urlparameters.add(new BasicNameValuePair("username",
+							tempUsername));
+
+					post.setEntity(new UrlEncodedFormEntity(urlparameters));
+
+					HttpResponse response = client.execute(post);
+					HttpEntity entity = response.getEntity();
+					String data = EntityUtils.toString(entity);
+
+					// Log.d("test:", data);
+					return data;
+				}
+
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -166,50 +206,49 @@ public class FavoritesViewActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			
+
 			return null;
 		}
-		
-		
+
 		@Override
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			Log.d("test: ", result);
-			//convert the json string to arraylist of favorites
-			
+			// convert the json string to arraylist of favorites
+
 			try {
 				JSONObject jsnobject = new JSONObject(result);
 				JSONArray jsonArray = jsnobject.getJSONArray("result_data");
-			    for (int i = 0; i < jsonArray.length(); i++) {
-			        JSONObject FavObject = jsonArray.getJSONObject(i);
-			        String Fname = FavObject.getString("name");
-			        String Flat = FavObject.getString("latitude");
-			        String Flong = FavObject.getString("longitude");
-			        Favorite tempFav = new Favorite(Fname, Flat, Flong);
-			        favoritesList.add(tempFav);
-			    }
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject FavObject = jsonArray.getJSONObject(i);
+					String Fname = FavObject.getString("name");
+					String Flat = FavObject.getString("latitude");
+					String Flong = FavObject.getString("longitude");
+					Favorite tempFav = new Favorite(Fname, Flat, Flong);
+					favoritesList.add(tempFav);
+				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//set the names in the favoritesnames list to be displayed in the listView 
-			for (int i = 0; i< favoritesList.size(); i++){
+			// set the names in the favoritesnames list to be displayed in the
+			// listView
+			for (int i = 0; i < favoritesList.size(); i++) {
 				Favorite f = favoritesList.get(i);
 				String name = f.getName();
 				favoritesNames.add(name);
 			}
-			
 
-			//***********Controller********************//
-			
-			final ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoritesViewActivity.this, android.R.layout.simple_list_item_1, favoritesNames);;
-			
-			//***************View****************//
-			lvFavs =(ListView) findViewById(R.id.listViewFavorites);
-					
+			// ***********Controller********************//
+
+			final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+					FavoritesViewActivity.this,
+					android.R.layout.simple_list_item_1, favoritesNames);
+
+			// ***************View****************//
+			lvFavs = (ListView) findViewById(R.id.listViewFavorites);
+
 			lvFavs.setAdapter(adapter);
 			
 			lvFavs.setOnItemClickListener(new OnItemClickListener() {
@@ -219,21 +258,61 @@ public class FavoritesViewActivity extends Activity {
 						int position, long id) {
 					// TODO Auto-generated method stub
 					Favorite f = favoritesList.get(position);
-					Intent i = new Intent(FavoritesViewActivity.this, MapPointActivity.class);
+					Intent i = new Intent(FavoritesViewActivity.this,
+							MapPointActivity.class);
 					i.putExtra("name", f.getName());
 					i.putExtra("lat", f.getLatitude());
 					i.putExtra("long", f.getLongitude());
 					startActivity(i);
 				}
-			
+
 			});
-			
+
 			dialog.dismiss();
-			
-		
+
+			lvFavs.setLongClickable(true);
+
+			lvFavs.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> parent,
+						View view, int position, long id) {
+					// TODO Auto-generated method stub
+					removeItemFromList(position);
+					return true;
+				}
+
+			});
 		}
-		
-		
+
+	}
+
+	public void removeItemFromList(final int position) {
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(
+				FavoritesViewActivity.this);
+		// Add the buttons
+		builder.setTitle("Delete " + favoritesNames.get(position) + "?");
+		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				// User clicked OK button
+				actionFlag = "delete";
+				favToDelete = position;
+				new RetrieveFavsTask().execute();
+
+			}
+		});
+		builder.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						// dismissDialog(id);
+					}
+				});
+
+		// Create the AlertDialog
+		AlertDialog dialog = builder.create();
+		dialog.show();
+
 	}
 
 }

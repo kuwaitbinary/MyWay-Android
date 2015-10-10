@@ -22,7 +22,7 @@
     <string name="etOldPassword">Old Password</string>
     <string name="title_activity_favorites">FavoritesActivity</string>
     <string name="etFavoriteTitle">Title</string>
-    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_splash_screen">MyWay</string>
     <string name="enable_reports">Enable Reports</string>
     <string name="enable_nearby_poi">Enable Nearby POI</string>
     <string name="enable_overspeed_alert">Enable Overspeed Alert</string>

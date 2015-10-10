@@ -25,14 +25,15 @@ public class EventInfoViewActivity extends Activity {
 //		
 		TextView tvEventName = (TextView) findViewById(R.id.textView1);
 		TextView tvEventDec = (TextView) findViewById(R.id.textView2);
-//		TextView tvStartDate = (TextView) findViewById(R.id.textViewStartDateValue);
-//		TextView tvEndDate = (TextView) findViewById(R.id.textViewEndDateValue);
+		TextView tvStartDate = (TextView) findViewById(R.id.textView4);
+		TextView tvEndDate = (TextView) findViewById(R.id.textView5);
 //		ImageView ivEventImage = (ImageView) findViewById(R.id.imageView1);
 		Button bSendToMap = (Button) findViewById(R.id.button1);
 //		
 		tvEventName.setText(e.getName());
 		tvEventDec.setText(e.getDescription());
-		
+		tvStartDate.setText(e.getStartDate());
+		tvEndDate.setText(e.getEndDate());
 		bSendToMap.setOnClickListener(new OnClickListener() {
 			
 			@Override

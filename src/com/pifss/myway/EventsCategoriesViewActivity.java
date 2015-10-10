@@ -23,6 +23,7 @@ import com.pifss.myway.FavoritesViewActivity.RetrieveFavsTask;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +44,7 @@ public class EventsCategoriesViewActivity extends Activity {
 	ArrayList<String> eventsNames=new ArrayList<String>();
 	static ArrayList<Event> eventsList = new ArrayList<Event>();
 	ListView lvEvents;
-	
+	public final static String PREF_NAME = "userInformation";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,15 +81,22 @@ public class EventsCategoriesViewActivity extends Activity {
 		});
 		
 		Button bReq = (Button) findViewById(R.id.buttonReqEvent);
-		bReq.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(EventsCategoriesViewActivity.this, RequestEventActivity.class);
-				startActivity(i);
-			}
-		});
+		
+		final SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_APPEND);
+		if (prefs.getBoolean("isLoggedIn", false)){
+			bReq.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent i = new Intent(EventsCategoriesViewActivity.this, RequestEventActivity.class);
+					startActivity(i);
+				}
+			});
+		} else {
+			bReq.setText("Request Event (Log in needed!)");
+		}
+		
 		
 		//use the following line to add the sliding menu to the current page
 				SlidingUtil.SetSliding(this);
@@ -183,7 +191,7 @@ class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			Log.d("test: ", result);
+//			Log.d("test: ", result);
 			//convert the json string to arraylist of events
 			
 			try {
@@ -197,7 +205,10 @@ class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
 			        String Flat = FavObject.getString("latitude");
 			        String Flong = FavObject.getString("longitude");
 			        String Fimage = FavObject.getString("image");
-			       Event e = new Event(Fname, Fdes, Fcat, Flat, Flong, Fimage);
+			        String FSdate = "2015-10-"+(i+1);//FavObject.getString("startDate");
+			        String FEdate = "2015-11-"+(i+2);//FavObject.getString("endDate");
+			        Log.d("test:", FavObject.toString());
+			       Event e = new Event(Fname, Fdes, Fcat, Flat, Flong, FSdate, FEdate, Fimage);
 			        eventsList.add(e);
 			    }
 			} catch (JSONException e) {
@@ -209,6 +220,7 @@ class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
 				Event e = eventsList.get(i);
 				String name = e.getName();
 				Log.d("test:", e.getName());
+				
 				eventsNames.add(name);
 			}
 			

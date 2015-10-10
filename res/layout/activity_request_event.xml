@@ -17,28 +17,6 @@
         android:layout_alignParentRight="true"
         android:text="@string/bSend" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:singleLine="true"
-        android:hint="Event Name" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:singleLine="true"
-        android:hint="Event Description" />
-
     <Button
         android:id="@+id/button2"
         style="?android:attr/buttonStyleSmall"
@@ -82,14 +60,58 @@
         android:text="      "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/button1"
+        android:text="Set location" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignParentTop="true"
+        android:textColor="#FFFFA217"
+        android:ems="10"
+        android:hint="Event Name"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Event Description"
+        android:textColor="#FFFFA217"
+        android:lines="2"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Event Type"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_below="@+id/editText1"
+        android:textColor="#FFFFA217"
+        android:ems="10" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="29dp"
+        android:layout_above="@+id/button4"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/ic_default_profile_img" />
 
 </RelativeLayout>
