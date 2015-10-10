@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.widget.TextView;
@@ -181,6 +182,15 @@ public class Activity_ReportDetails extends Activity {
 		return true;
 	}
 	
+	
+	   @Override
+	    public void onBackPressed() {
+	    	// TODO Auto-generated method stub
+	    	super.onBackPressed();
+	    	Intent i = new Intent(Activity_ReportDetails.this, Home.class);
+			startActivity(i);
+			finish();
+	    }
 }
 	
  
