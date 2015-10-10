@@ -114,18 +114,18 @@ public class SlidingUtil {
 		if (status){//is logged in
 			list.clear();
 			list.add(new ItemMenu("Home", BitmapFactory.decodeResource(a.getResources(), R.drawable.home)));
-			list.add(new ItemMenu("Traffic", BitmapFactory.decodeResource(a.getResources(), R.drawable.traffic)));
-			list.add(new ItemMenu("Events", BitmapFactory.decodeResource(a.getResources(), R.drawable.poi)));
+			list.add(new ItemMenu("Traffic", BitmapFactory.decodeResource(a.getResources(), R.drawable.s_traffic)));
+			list.add(new ItemMenu("Events", BitmapFactory.decodeResource(a.getResources(), R.drawable.s_poi)));
 			list.add(new ItemMenu("Nearby", BitmapFactory.decodeResource(a.getResources(), R.drawable.nearby2)));
 			list.add(new ItemMenu("Setting", BitmapFactory.decodeResource(a.getResources(), R.drawable.settings)));
-			list.add(new ItemMenu("Profile", BitmapFactory.decodeResource(a.getResources(), R.drawable.traffic)));
-			list.add(new ItemMenu("Parent Monitoring", BitmapFactory.decodeResource(a.getResources(), R.drawable.traffic)));
-			list.add(new ItemMenu("Favorites", BitmapFactory.decodeResource(a.getResources(), R.drawable.ic_profile)));
+			list.add(new ItemMenu("Profile", BitmapFactory.decodeResource(a.getResources(), R.drawable.usr)));
+			list.add(new ItemMenu("Parent Monitoring", BitmapFactory.decodeResource(a.getResources(), R.drawable.s_parent_icon)));
+			list.add(new ItemMenu("Favorites", BitmapFactory.decodeResource(a.getResources(), R.drawable.s_ic_profile)));
 		} else { //is logged out
 			list.clear();
 			list.add(new ItemMenu("Home", BitmapFactory.decodeResource(a.getResources(), R.drawable.home)));
-			list.add(new ItemMenu("Traffic", BitmapFactory.decodeResource(a.getResources(), R.drawable.traffic)));
-			list.add(new ItemMenu("Events", BitmapFactory.decodeResource(a.getResources(), R.drawable.poi)));
+			list.add(new ItemMenu("Traffic", BitmapFactory.decodeResource(a.getResources(), R.drawable.s_traffic)));
+			list.add(new ItemMenu("Events", BitmapFactory.decodeResource(a.getResources(), R.drawable.s_poi)));
 			list.add(new ItemMenu("Nearby", BitmapFactory.decodeResource(a.getResources(), R.drawable.nearby2)));
 			list.add(new ItemMenu("Setting", BitmapFactory.decodeResource(a.getResources(), R.drawable.settings)));
 			list.add(new ItemMenu("Log in", BitmapFactory.decodeResource(a.getResources(), R.drawable.login)));

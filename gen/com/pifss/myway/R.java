@@ -672,15 +672,21 @@ containing a value of this type.
         public static final int powered_by_google_dark=0x7f02005f;
         public static final int powered_by_google_light=0x7f020060;
         public static final int resetblue=0x7f020061;
-        public static final int saveblue=0x7f020062;
-        public static final int settings=0x7f020063;
-        public static final int splash_screen=0x7f020064;
-        public static final int standstill=0x7f020065;
-        public static final int standstill_selected=0x7f020066;
-        public static final int traaash=0x7f020067;
-        public static final int traffic=0x7f020068;
-        public static final int trafficme=0x7f020069;
-        public static final int wherewewok=0x7f02006a;
+        public static final int s_add_user=0x7f020062;
+        public static final int s_ic_profile=0x7f020063;
+        public static final int s_parent_icon=0x7f020064;
+        public static final int s_poi=0x7f020065;
+        public static final int s_traffic=0x7f020066;
+        public static final int saveblue=0x7f020067;
+        public static final int settings=0x7f020068;
+        public static final int splash_screen=0x7f020069;
+        public static final int standstill=0x7f02006a;
+        public static final int standstill_selected=0x7f02006b;
+        public static final int traaash=0x7f02006c;
+        public static final int traffic=0x7f02006d;
+        public static final int trafficme=0x7f02006e;
+        public static final int usr=0x7f02006f;
+        public static final int wherewewok=0x7f020070;
     }
     public static final class id {
         public static final int EditTextEmailReg=0x7f050092;
