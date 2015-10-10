@@ -1,10 +1,33 @@
 package com.pifss.myway;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.ArrayList;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import com.pifss.myway.Activity_other.DownloadTask;
+
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
@@ -13,6 +36,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Activity_hazard extends Activity {
 	// define two flags 
@@ -20,7 +44,11 @@ public class Activity_hazard extends Activity {
 	boolean onroadFlag = false;
 	// shared preference file name 
 	final static String PREF_NAME = "reportlist";
-
+	Double lat ;
+	Double lon;
+	String hazardComment = "";
+	Integer typeId = 0;
+	String name;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +60,19 @@ public class Activity_hazard extends Activity {
 		final EditText ETcomment = (EditText) findViewById(R.id.hazardtext);
 
 		Button submit = (Button) findViewById(R.id.button1);
+		 final InformationManager imm = new InformationManager(this);
+			
+			JSONObject userJson;
+			
+			userJson = imm.getUserInformation();
+			try {
+				 name = userJson.getString("username");
+				System.out.println("name is " + name);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		
-
-		
-		
-		
 		// set on click listener for  construction image view 
 		construction.setOnClickListener(new OnClickListener() {
 			
@@ -68,6 +103,38 @@ public class Activity_hazard extends Activity {
 		});
 		
 		
+		LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+		lm.requestLocationUpdates(lm.NETWORK_PROVIDER, 2000,5, new LocationListener() {
+			
+			@Override
+			public void onStatusChanged(String provider, int status, Bundle extras) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProviderEnabled(String provider) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProviderDisabled(String provider) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onLocationChanged(Location location) {
+				// TODO Auto-generated method stub
+				lat = location.getLatitude();
+				lon = location.getLongitude();
+		
+				
+			}
+		});
+	
+		
 		// submit will get the comment from the user and saved in the sharedprefrence file 
 		submit.setOnClickListener(new OnClickListener() {
 			
@@ -76,50 +143,44 @@ public class Activity_hazard extends Activity {
 				// check which button the user clicked construction or onroad
 				// if user choose construction then create key"construction" in sharedprefrence file
 				if(constructionFlag){
-					SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_APPEND);
-					Editor editor=prefs.edit();
-					String comment=ETcomment.getText().toString();
+					typeId=2;
+				hazardComment = ETcomment.getText().toString();
+				new DownloadTask().execute();
 					
-					String commentsString=prefs.getString("Construction","[]");
-					
-					JSONArray arrayJson=null;
-					try {
-						arrayJson = new JSONArray(commentsString);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					} 
-					arrayJson.put(comment);
-					String arrayAsString=arrayJson.toString();
-					editor.putString("Construction", arrayAsString);
-			        
-			        editor.commit();
-			        
-			        ETcomment.setText("");
-			        finish();
-				}
+				constructionFlag = false;
+				construction.setImageResource(R.drawable.construction);
+				ETcomment.setText("");
+				Intent i=new Intent(Activity_hazard.this,Activity_TrafficMain.class);
+				startActivity(i);
+			}
+		
 				// if user choose onroad then create key"construction" in sharedprefrence file
 
 				else if(onroadFlag){
-					SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_APPEND);
-					Editor editor=prefs.edit();
-					String comment=ETcomment.getText().toString();
-					String commentsString=prefs.getString("onRoad","[]");
-					JSONArray arrayJson=null;
-					try {
-						arrayJson = new JSONArray(commentsString);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					} 
-					arrayJson.put(comment);
-					String arrayAsString=arrayJson.toString();
-					editor.putString("onRoad", arrayAsString);
-			        
-			        editor.commit();
-			        
-			        ETcomment.setText("");	
-			        finish();
+					typeId=3;
+					hazardComment = ETcomment.getText().toString();
+					new DownloadTask().execute();
+					
+				onroadFlag = false;
+				onroad.setImageResource(R.drawable.onroad);
+				ETcomment.setText("");
+				Intent i=new Intent(Activity_hazard.this,Activity_TrafficMain.class);
+				startActivity(i);
+					
 				}
-			}
+				else {
+					AlertDialog alertDialog = new AlertDialog.Builder(Activity_hazard.this).create();
+					alertDialog.setTitle("Oops!");
+					alertDialog.setMessage("Please click on the icon");
+					alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+					    new DialogInterface.OnClickListener() {
+					        public void onClick(DialogInterface dialog, int which) {
+					            dialog.dismiss();
+					        }
+					    });
+					alertDialog.show();
+				}
+			}			
 		});
 				
 	}
@@ -130,5 +191,80 @@ public class Activity_hazard extends Activity {
 		getMenuInflater().inflate(R.menu.activity_hazard, menu);
 		return true;
 	}
+	
+	
+	
+	// async class 
+	
+		class DownloadTask extends AsyncTask<String, Integer, String>{
+	        
+		
+			@Override
+			protected void onPreExecute() {
+				// TODO Auto-generated method stub
+				super.onPreExecute();
+	
+			}
+			
+			
+			@Override
+			protected String doInBackground(String... params) {
+				// TODO Auto-generated method stub
+				
+				
+				try {
+					URI u=new URI("http://mobile.comxa.com/reports/all_reports.json");
+					
+					DefaultHttpClient client=new DefaultHttpClient();
+					
+				
+					HttpPost post=new HttpPost(u);	
+					ArrayList<BasicNameValuePair> l=new ArrayList<BasicNameValuePair>();
+					l.add(new BasicNameValuePair("reportTypeId",typeId.toString()));
+					l.add(new BasicNameValuePair("lat", lat.toString()));
+					l.add(new BasicNameValuePair("lon", lon.toString()));
+					l.add(new BasicNameValuePair("username", name));
+					if(hazardComment.equals("")){
+						
+							l.add(new BasicNameValuePair("comment","Caution! there is a hazard ahead"));	
+					}
+					else{
+					
+							l.add(new BasicNameValuePair("comment",hazardComment ));
+					
+					}
+					
+					//Toast.makeText(Activity_hazard.this, "type ID: "+typeId.toString(), Toast.LENGTH_LONG).show();
+					
+					post.setEntity(new UrlEncodedFormEntity(l));
+					
+				client.execute(post);
+	
+
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				return null;
+			}
+			
+			
+			@Override
+			protected void onPostExecute(String result) {
+				// TODO Auto-generated method stub
+				
+				super.onPostExecute(result);
+				
+				Toast.makeText(Activity_hazard.this, result, Toast.LENGTH_LONG).show();
+				
+			}
+			
+			
+		}
+		
+		
+	
+	
 
 }

@@ -1,13 +1,30 @@
 package com.pifss.myway;
 
+import java.net.URI;
+import java.util.ArrayList;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.pifss.myway.Activity_other.DownloadTask;
 
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
@@ -23,13 +40,13 @@ public class Activity_AccidentReport extends Activity {
 	boolean minorFlag = false;
 	boolean majorFlag = false;
 	final static String PREF_NAME = "reportlist";
-	SharedPreferences prefs;
-	private Editor editor;
-	String slon ;
-	  String slat;
-	  
-	  float dLat;
-	  float dLng;
+
+	Double lat ;
+	Double lon;
+	String accidentComment = "";
+	Integer typeId = 0;
+	  String name;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,12 +57,18 @@ public class Activity_AccidentReport extends Activity {
 		final EditText ETcomment = (EditText) findViewById(R.id.accidenttext);
 
 		Button submit = (Button) findViewById(R.id.button1);
-		
-		
-	
-		
-	
+		 final InformationManager imm = new InformationManager(this);
 			
+			JSONObject userJson;
+			
+			userJson = imm.getUserInformation();
+			try {
+				 name = userJson.getString("username");
+				System.out.println("name is " + name);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		minor.setOnClickListener(new OnClickListener() {
 			
@@ -77,6 +100,40 @@ public class Activity_AccidentReport extends Activity {
 		});
 		
 		
+		
+		LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+		lm.requestLocationUpdates(lm.NETWORK_PROVIDER, 2000,5, new LocationListener() {
+			
+			@Override
+			public void onStatusChanged(String provider, int status, Bundle extras) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProviderEnabled(String provider) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProviderDisabled(String provider) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onLocationChanged(Location location) {
+				// TODO Auto-generated method stub
+				lat = location.getLatitude();
+				lon = location.getLongitude();
+		
+				
+			}
+		});
+		
+	
+		
 		// submit will get the comment from the user and saved in the sharedprefrence file 
 		submit.setOnClickListener(new OnClickListener() {
 			
@@ -85,83 +142,43 @@ public class Activity_AccidentReport extends Activity {
 				// check which button the user clicked minor or major
 				// if user choose minor then create key"minor_Accient" in sharedprefrence file 
 				if(minorFlag){
-					SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_APPEND);
-					Editor editor=prefs.edit();
-					String comment=ETcomment.getText().toString();
-					String commentsString=prefs.getString("Minor_Accident","[]");
-					JSONArray arrayJson=null;
-					try {
-						arrayJson = new JSONArray(commentsString);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} 
-					arrayJson.put(comment);
+					accidentComment = ETcomment.getText().toString();
+					typeId = 7;
+					new DownloadTask().execute();
 					
-					String arrayAsString=arrayJson.toString();
-					editor.putString("Minor_Accident", arrayAsString);
-					
-			        
-			        editor.commit();
-			        
-			        ETcomment.setText("");
-			        
-					
-				}
+					minorFlag = false;
+					minor.setImageResource(R.drawable.minor);
+					ETcomment.setText("");
+					Intent i=new Intent(Activity_AccidentReport.this,Activity_TrafficMain.class);
+					startActivity(i);
+			}
+		
 				
 				// if user choose major then create key"major_Accient" in sharedprefrence file 
 				else if(majorFlag){
-					SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_APPEND);
-				 Editor editor=prefs.edit();
-					String comment=ETcomment.getText().toString();
-					String commentsString=prefs.getString("Major_Accident","[]");
-					JSONArray arrayJson=null;
-					try {
-						arrayJson = new JSONArray(commentsString);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} 
-					arrayJson.put(comment);
+					accidentComment = ETcomment.getText().toString();
+					typeId = 8;
+					new DownloadTask().execute();
 					
-					String arrayAsString=arrayJson.toString();
-		
-//
-//					LocationResult locationResult = new LocationResult(){
-//		    		    @Override
-//		    		    public void gotLocation(Location location){
-//		    		        //Got the location!
-//		    		    	 slat = String.valueOf(location.getLatitude());
-//		    		    	 slon = String.valueOf(location.getLongitude());
-//		    		    	 
-//		    		    	 dLat = (float) location.getLatitude();
-//		    		    	 dLng = (float) location.getLongitude();
-//		    		    	 
-//		    		    	
-//		    		    	 System.out.println("my lat + lng: " + dLat+"," + dLng);
-//		 		    		editor.putString("lon", slon);
-//		 		    		editor.putString("lat", slat);
-//
-//		    		    	System.out.println("location are: "+location);
-//		    		    	
-//		    		    }
-//		    		};
-//		    		MyLocation myLocation = new MyLocation();
-//		    		myLocation.getLocation(Activity_AccidentReport.this, locationResult);
-//		    		
-//		    		
-//		    		
-//		    	//	Toast.makeText(Activity_AccidentReport.this, slat+"ans "+slon, Toast.LENGTH_LONG).show();
-					editor.putString("Major_Accident", arrayAsString);
-					
-			        editor.commit();
-			        
-			        ETcomment.setText("");
-			        
-			        
+				majorFlag = false;
+				major.setImageResource(R.drawable.major);
+				ETcomment.setText("");
+				Intent i=new Intent(Activity_AccidentReport.this,Activity_TrafficMain.class);
+				startActivity(i);
 					
 				}
-				finish();
+				else {
+					AlertDialog alertDialog = new AlertDialog.Builder(Activity_AccidentReport.this).create();
+					alertDialog.setTitle("Oops!");
+					alertDialog.setMessage("Please click on the icon");
+					alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+					    new DialogInterface.OnClickListener() {
+					        public void onClick(DialogInterface dialog, int which) {
+					            dialog.dismiss();
+					        }
+					    });
+					alertDialog.show();
+				}
 			}
 		});
 		
@@ -174,5 +191,73 @@ public class Activity_AccidentReport extends Activity {
 		getMenuInflater().inflate(R.menu.activity__accident_report, menu);
 		return true;
 	}
+	
+	// async class 
+	
+		class DownloadTask extends AsyncTask<String, Integer, String>{
+	        
+			
+			@Override
+			protected void onPreExecute() {
+
+				super.onPreExecute();
+		
+			}
+			
+			
+			@Override
+			protected String doInBackground(String... params) {
+				// TODO Auto-generated method stub
+				
+				
+				try {
+					URI u=new URI("http://mobile.comxa.com/reports/all_reports.json");
+					
+					DefaultHttpClient client=new DefaultHttpClient();
+					
+				
+					HttpPost post=new HttpPost(u);	
+					ArrayList<BasicNameValuePair> l=new ArrayList<BasicNameValuePair>();
+					l.add(new BasicNameValuePair("reportTypeId",typeId.toString()));
+					l.add(new BasicNameValuePair("lat", lat.toString()));
+					l.add(new BasicNameValuePair("lon", lon.toString()));
+					l.add(new BasicNameValuePair("username", name));
+					if(accidentComment.equals("")){
+						
+							l.add(new BasicNameValuePair("comment","Caution! there is an accident ahead"));	
+					}
+					else{
+					
+							l.add(new BasicNameValuePair("comment",accidentComment ));
+					
+					}
+					
+					post.setEntity(new UrlEncodedFormEntity(l));
+					client.execute(post);
+
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				return null;
+			}
+			
+			
+			@Override
+			protected void onPostExecute(String result) {
+				// TODO Auto-generated method stub
+				
+				super.onPostExecute(result);
+				Toast.makeText(Activity_AccidentReport.this, result, Toast.LENGTH_LONG).show();
+				
+			}
+			
+			
+		}
+		
+		
+	
+	
 
 }

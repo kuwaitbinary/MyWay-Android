@@ -1,5 +1,7 @@
 package com.pifss.myway;
 
+import org.json.JSONArray;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -8,15 +10,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Activity_TrafficMain extends Activity {
 
 	// main class of traffic reports 
+	
+	public static JSONArray reports=null;
+	ListAllReports lr = new ListAllReports();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_traffic_main);
-		
+		lr.getReports();
 		// four image views represents all types of traffic reports (traffic jam,accident,hazard,other)
 		ImageView traffic  = (ImageView) findViewById(R.id.traffic);
 		ImageView accident = (ImageView) findViewById(R.id.accident);
@@ -81,9 +87,19 @@ public class Activity_TrafficMain extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i=new Intent(Activity_TrafficMain.this,Activity_ViewReport.class);
+//				Intent i=new Intent(Activity_TrafficMain.this,Activity_ViewReport.class);
+//				
+//				startActivity(i);
+//				
+//				ListAllReports lr = new ListAllReports();
+//				
+//				lr.getReports();
 				
-				startActivity(i);
+				
+			Intent i=new Intent(Activity_TrafficMain.this,Activity_ReportDetails.class);
+			
+			startActivity(i);
+				
 			}
 		});
 		
