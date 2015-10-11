@@ -1,7 +1,15 @@
 package com.pifss.myway;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,13 +35,18 @@ public class EventInfoViewActivity extends Activity {
 		TextView tvEventDec = (TextView) findViewById(R.id.textView2);
 		TextView tvStartDate = (TextView) findViewById(R.id.textView4);
 		TextView tvEndDate = (TextView) findViewById(R.id.textView5);
-//		ImageView ivEventImage = (ImageView) findViewById(R.id.imageView1);
+		ImageView ivEventImage = (ImageView) findViewById(R.id.imageView1);
 		Button bSendToMap = (Button) findViewById(R.id.button1);
 //		
 		tvEventName.setText(e.getName());
 		tvEventDec.setText(e.getDescription());
 		tvStartDate.setText(e.getStartDate());
 		tvEndDate.setText(e.getEndDate());
+		
+		
+		Bitmap bm = InformationManager.decodeBase64(e.getImage());
+		ivEventImage.setImageBitmap(bm);
+		
 		bSendToMap.setOnClickListener(new OnClickListener() {
 			
 			@Override
