@@ -191,10 +191,10 @@ public class Activity_other extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			
+			URI u = null;
 			
 			try {
-				URI u=new URI("http://mobile.comxa.com/reports/all_reports.json");
+				 u=new URI("http://172.16.8.105:8080/MyWayWeb/postTrafficReport");
 				
 				DefaultHttpClient client=new DefaultHttpClient();
 				
@@ -206,17 +206,17 @@ public class Activity_other extends Activity {
 				
 				HttpPost post=new HttpPost(u);	
 				ArrayList<BasicNameValuePair> l=new ArrayList<BasicNameValuePair>();
-				l.add(new BasicNameValuePair("reportTypeId","1"));
-				l.add(new BasicNameValuePair("lat", lat.toString()));
-				l.add(new BasicNameValuePair("lon", lon.toString()));
+				l.add(new BasicNameValuePair("report_type","1"));
+				l.add(new BasicNameValuePair("report_lat", lat.toString()));
+				l.add(new BasicNameValuePair("report_log", lon.toString()));
 				l.add(new BasicNameValuePair("username", name));
 				if(otherComment.equals("")){
 					
-						l.add(new BasicNameValuePair("comment","Caution! there is something on the road"));	
+						l.add(new BasicNameValuePair("report_comments","Caution! there is something on the road"));	
 				}
 				else{
 				
-						l.add(new BasicNameValuePair("comment",otherComment ));
+						l.add(new BasicNameValuePair("report_comments",otherComment ));
 				
 				}
 				

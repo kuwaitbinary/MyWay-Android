@@ -31,7 +31,7 @@ class DownloadTaskReport extends AsyncTask<String, Integer, String>{
 	protected String doInBackground(String... params) {
 		URI u = null;
 		try {
-			 u= new URI("http://mobile.comxa.com/reports/all_reports.json");
+			 u= new URI("http://172.16.8.105:8080/MyWayWeb/viewAllTrafficReports");
 				DefaultHttpClient client=new DefaultHttpClient();
 				HttpPost post=new HttpPost(u);
 				String finalString="hello baby";
