@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -38,49 +39,60 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DriverDestenationList extends Activity {
 	static ArrayList<Driver> driverDesList = new ArrayList<Driver>();
-	TextView tvDestination = (TextView) findViewById(R.id.DestinationLocationDriver);
-	LocationManager lm = (LocationManager) this
-			.getSystemService(LOCATION_SERVICE);
-	Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-	Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+3:00"));
-	Date currentLocalTime = cal.getTime();
-	SimpleDateFormat date = new SimpleDateFormat("HH:mm a");
+	TextView tvDestination ;
+	LocationManager lm ;
+	Location location ;
+	Calendar cal ;
+	Date currentLocalTime ;
+	SimpleDateFormat date ;
 	int i = 0;
-	// you can get seconds by adding "...:ss" to it
+	Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_driver_destenation_list);
 		
-		new postDriverDashBoardTask().execute();
-        final Thread t=new Thread(new Runnable() {
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(true) {
-					new postDriverReportTask().execute();
-					new RetrieveDestinationsTask().execute();
-//					runOnUiThread(new Runnable() {
-//						public void run() {
-//							new postDriverReportTask().execute();
-//							new RetrieveDestinationsTask().execute();
-//						}
-//					});
-					try {
-						Thread.sleep(30000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-				}
-				
-			}
-		});
+		lm = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+		location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+3:00"));
+		currentLocalTime = cal.getTime();
+		date = new SimpleDateFormat("HH:mm a");
+		
+		tvDestination = (TextView) findViewById(R.id.DestinationLocationDriver);
+		new RetrieveDestinationsTask().execute();
+        tvDestination.setText("Press Here To Show Your Destenation");
+	new postDriverDashBoardTask().execute();
+		
+//        final Thread t=new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				// TODO Auto-generated method stub
+//				while(true) {
+//					
+////					runOnUiThread(new Runnable() {
+////						public void run() {
+////							new postDriverReportTask().execute();
+//			
+//						        
+//							
+////						}
+////					});
+//					try {
+//						Thread.sleep(1000);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//					
+//				}
+//				
+//			}
+//		});
         
         
         tvDestination.setOnClickListener(new OnClickListener() {
@@ -152,7 +164,7 @@ public class DriverDestenationList extends Activity {
 	class postDriverDashBoardTask extends AsyncTask<String, Integer, String> {
 		
         String localTime = date.format(currentLocalTime);
-
+        
 		ProgressDialog dialog = new ProgressDialog(DriverDestenationList.this);
 
 		@Override
@@ -162,13 +174,20 @@ public class DriverDestenationList extends Activity {
 			dialog.setTitle("Sending Request");
 			dialog.setMessage("Sending....");
 			dialog.show();
+			
+			
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
+			lm =  (LocationManager) context.getSystemService(LOCATION_SERVICE);
+			location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+			cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+3:00"));
+			currentLocalTime = cal.getTime();
+			date = new SimpleDateFormat("HH:mm a");
 			try {
-				URI u = new URI(" ");
+				URI u = new URI("http://172.16.8.105:8080/MyWayWeb/setDriverDashBoard");
 				DefaultHttpClient client = new DefaultHttpClient();
 				HttpPost post = new HttpPost(u);
 				ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
@@ -188,43 +207,47 @@ public class DriverDestenationList extends Activity {
 				}
 				
 				float battreyPrc = getBatteryLevel();
-				 if (battreyPrc == 90) {
-					String battreyPrec = String.valueOf(getBatteryLevel());
-					String lon = String.valueOf(location.getLongitude());
-					String lat = String.valueOf(location.getLatitude());
-					urlparameters.add(new BasicNameValuePair("latitude", lat));
-					urlparameters.add(new BasicNameValuePair("longitude", lon));
-					urlparameters.add(new BasicNameValuePair("BatteryPrc", battreyPrec));
-					urlparameters.add(new BasicNameValuePair("username",tempUsername));
-					urlparameters.add(new BasicNameValuePair("currentTime", localTime));
-				} else if (battreyPrc == 70) {
-					String battreyPrec = String.valueOf(getBatteryLevel());
-					String lon = String.valueOf(location.getLongitude());
-					String lat = String.valueOf(location.getLatitude());
-					urlparameters.add(new BasicNameValuePair("latitude", lat));
-					urlparameters.add(new BasicNameValuePair("longitude", lon));
-					urlparameters.add(new BasicNameValuePair("BatteryPrc", battreyPrec));
-					urlparameters.add(new BasicNameValuePair("username",tempUsername));
-					urlparameters.add(new BasicNameValuePair("currentTime", localTime));
-				} else if (battreyPrc == 40) {
-					String battreyPrec = String.valueOf(getBatteryLevel());
-					String lon = String.valueOf(location.getLongitude());
-					String lat = String.valueOf(location.getLatitude());
-					urlparameters.add(new BasicNameValuePair("latitude", lat));
-					urlparameters.add(new BasicNameValuePair("longitude", lon));
-					urlparameters.add(new BasicNameValuePair("BatteryPrc", battreyPrec));
-					urlparameters.add(new BasicNameValuePair("username",tempUsername));
-					urlparameters.add(new BasicNameValuePair("currentTime", localTime));
-				} else if (battreyPrc == 20) {
-					String battreyPrec = String.valueOf(getBatteryLevel());
-					String lon = String.valueOf(location.getLongitude());
-					String lat = String.valueOf(location.getLatitude());
-					urlparameters.add(new BasicNameValuePair("latitude", lat));
-					urlparameters.add(new BasicNameValuePair("longitude", lon));
-					urlparameters.add(new BasicNameValuePair("BatteryPrc", battreyPrec));
-					urlparameters.add(new BasicNameValuePair("username",tempUsername));
-					urlparameters.add(new BasicNameValuePair("currentTime", localTime));
-				}
+//				 if (battreyPrc == 100) {
+//					String battreyPrec = String.valueOf(getBatteryLevel());
+//					String lon = String.valueOf(location.getLongitude());
+//					String lat = String.valueOf(location.getLatitude());
+//					urlparameters.add(new BasicNameValuePair("currentLat", lat));
+//					urlparameters.add(new BasicNameValuePair("currentLon", lon));
+//					urlparameters.add(new BasicNameValuePair("batteryStatus", battreyPrec));
+//					urlparameters.add(new BasicNameValuePair("userName",tempUsername));
+//					
+//				} else if (battreyPrc == 70) {
+//					String battreyPrec = String.valueOf(getBatteryLevel());
+//					String lon = String.valueOf(location.getLongitude());
+//					String lat = String.valueOf(location.getLatitude());
+//					urlparameters.add(new BasicNameValuePair("currentLat", lat));
+//					urlparameters.add(new BasicNameValuePair("currentLon", lon));
+//					urlparameters.add(new BasicNameValuePair("batteryStatus", battreyPrec));
+//					urlparameters.add(new BasicNameValuePair("userName",tempUsername));
+//				} else if (battreyPrc == 40) {
+//					String battreyPrec = String.valueOf(getBatteryLevel());
+//					String lon = String.valueOf(location.getLongitude());
+//					String lat = String.valueOf(location.getLatitude());
+//					urlparameters.add(new BasicNameValuePair("currentLat", lat));
+//					urlparameters.add(new BasicNameValuePair("currentLon", lon));
+//					urlparameters.add(new BasicNameValuePair("batteryStatus", battreyPrec));
+//					urlparameters.add(new BasicNameValuePair("userName",tempUsername));
+//				} else if (battreyPrc == 20) {
+//					String battreyPrec = String.valueOf(getBatteryLevel());
+//					String lon = String.valueOf(location.getLongitude());
+//					String lat = String.valueOf(location.getLatitude());
+//					urlparameters.add(new BasicNameValuePair("currentLat", lat));
+//					urlparameters.add(new BasicNameValuePair("currentLon", lon));
+//					urlparameters.add(new BasicNameValuePair("batteryStatus", battreyPrec));
+//					urlparameters.add(new BasicNameValuePair("userName",tempUsername));
+//				}
+				String battreyPrec = String.valueOf(getBatteryLevel());
+				String lon = String.valueOf(location.getLongitude());
+				String lat = String.valueOf(location.getLatitude());
+				urlparameters.add(new BasicNameValuePair("currentLat", lat));
+				urlparameters.add(new BasicNameValuePair("currentLon", lon));
+				urlparameters.add(new BasicNameValuePair("batteryStatus", battreyPrec));
+				urlparameters.add(new BasicNameValuePair("userName",tempUsername));
 				post.setEntity(new UrlEncodedFormEntity(urlparameters));
 				HttpResponse response = client.execute(post);
 				HttpEntity entity = response.getEntity();
@@ -263,201 +286,204 @@ public class DriverDestenationList extends Activity {
 		
 
 	}
-	
-	class postDriverReportTask extends AsyncTask<String, Integer, String> {
-		String localTime = date.format(currentLocalTime);
-		ProgressDialog dialog = new ProgressDialog(DriverDestenationList.this);
-
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			dialog.setTitle("Sending Request");
-			dialog.setMessage("Sending....");
-			dialog.show();
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			try {
-				URI u = new URI("");
-				DefaultHttpClient client = new DefaultHttpClient();
-				HttpPost post  = new HttpPost(u);
-				ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
-
-				
-				
-
-				SharedPreferences pref = getSharedPreferences(PREF_NAME,
-						MODE_APPEND);
-				String userObj = pref.getString("user", "ERROR");
-				String tempUsername = "";
-				JSONObject userJson;
-				try {
-					userJson = new JSONObject(userObj);
-					tempUsername = userJson.getString("username");
-
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				String lon = String.valueOf(location.getLongitude());
-				String lat = String.valueOf(location.getLatitude());
-
-				String overSpeed = "overSpeed";
-				String stops = "stop";
-				for (i=0;i<3;i++){
-					if(i==1){
-						urlparameters.add(new BasicNameValuePair("Reason", overSpeed));
-					}else{
-						urlparameters.add(new BasicNameValuePair("Reason", stops));
-					}
-				}
-				urlparameters.add(new BasicNameValuePair("latitude", lat));
-				urlparameters.add(new BasicNameValuePair("longitude", lon));
-				urlparameters.add(new BasicNameValuePair("username",tempUsername));
-				urlparameters.add(new BasicNameValuePair("currentTime", localTime));
-				
-				
-				
-				post.setEntity(new UrlEncodedFormEntity(urlparameters));
-
-				HttpResponse response = client.execute(post);
-				HttpEntity entity = response.getEntity();
-				String data = EntityUtils.toString(entity);
-
-				// Log.d("test:", data);
-				return data;
-
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			
-			Log.d("test: ", result);
-			dialog.dismiss();
-			
-			finish();
-		}
-
-	}
-class RetrieveDestinationsTask extends AsyncTask<String, Integer, String>{
-        
-//		ProgressDialog dialog=new ProgressDialog(EventsCategoriesViewActivity.this);
-		
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-//			dialog.setTitle("Loading Events");
-//			dialog.setMessage("Loading....");
+//	
+//	class postDriverReportTask extends AsyncTask<String, Integer, String> {
+//		String localTime = date.format(currentLocalTime);
+//		ProgressDialog dialog = new ProgressDialog(DriverDestenationList.this);
+//		
+//
+//		@Override
+//		protected void onPreExecute() {
+//			// TODO Auto-generated method stub
+//			super.onPreExecute();
+//			dialog.setTitle("Sending Request");
+//			dialog.setMessage("Sending....");
 //			dialog.show();
-		}
-		
-		
-		@Override
-		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			try {
-				
-				ArrayList<BasicNameValuePair> urlparameters=new ArrayList<BasicNameValuePair>();
-			
-				URI u=new URI("");
-				DefaultHttpClient client=new DefaultHttpClient();
-				
-				HttpPost post = new HttpPost(u);
-				
-				post.setEntity(new UrlEncodedFormEntity(urlparameters));
-				
-				HttpResponse response=client.execute(post);
-				HttpEntity entity=response.getEntity();
-			    String data=EntityUtils.toString(entity);
-				
-//			    Log.d("test:", data);
-				return data;
-				
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			
-			return null;
-		}
-		
-		
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+//		}
+//
+//		@Override
+//		protected String doInBackground(String... params) {
+//			// TODO Auto-generated method stub
+//			lm =  (LocationManager) context.getSystemService(LOCATION_SERVICE);
+//			location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//			cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+3:00"));
+//			currentLocalTime = cal.getTime();
+//			date = new SimpleDateFormat("HH:mm a");
+//			try {
+//				URI u = new URI("");
+//				DefaultHttpClient client = new DefaultHttpClient();
+//				HttpPost post  = new HttpPost(u);
+//				ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
+//
+//				
+//				
+//
+//				SharedPreferences pref = getSharedPreferences(PREF_NAME,
+//						MODE_APPEND);
+//				String userObj = pref.getString("user", "ERROR");
+//				String tempUsername = "";
+//				JSONObject userJson;
+//				try {
+//					userJson = new JSONObject(userObj);
+//					tempUsername = userJson.getString("username");
+//
+//				} catch (JSONException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				String lon = String.valueOf(location.getLongitude());
+//				String lat = String.valueOf(location.getLatitude());
+//
+//				String overSpeed = "overSpeed";
+//				String stops = "stop";
+//				for (i=0;i<3;i++){
+//					if(i==1){
+//						urlparameters.add(new BasicNameValuePair("Reason", overSpeed));
+//					}else{
+//						urlparameters.add(new BasicNameValuePair("Reason", stops));
+//					}
+//				}
+//				urlparameters.add(new BasicNameValuePair("latitude", lat));
+//				urlparameters.add(new BasicNameValuePair("longitude", lon));
+//				urlparameters.add(new BasicNameValuePair("username",tempUsername));
+//				urlparameters.add(new BasicNameValuePair("currentTime", localTime));
+//				
+//				
+//				
+//				post.setEntity(new UrlEncodedFormEntity(urlparameters));
+//
+//				HttpResponse response = client.execute(post);
+//				HttpEntity entity = response.getEntity();
+//				String data = EntityUtils.toString(entity);
+//
+//				
+//				return data;
+//
+//			} catch (MalformedURLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (URISyntaxException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (ClientProtocolException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			return null;
+//		}
+//
+//		@Override
+//		protected void onPostExecute(String result) {
+//			// TODO Auto-generated method stub
+//			super.onPostExecute(result);
+//			
 //			Log.d("test: ", result);
-			//convert the json string to arraylist of events
-			
-			try {
-				JSONObject jsnobject = new JSONObject(result);
-				JSONArray jsonArray = jsnobject.getJSONArray("result_data");
-			    for (int i = 0; i < jsonArray.length(); i++) {
-			        JSONObject desObject = jsonArray.getJSONObject(i);
-			        String userN = desObject.getString("userName");
-			        String driverdate = desObject.getString("date");
-			        String dTime = desObject.getString("Time");
-			        String dStartLat = desObject.getString("Startlatitude");
-			        String dStartLon = desObject.getString("Startlongitude");
-			        String dEndLat = desObject.getString("Endlatitude");
-			        String dEndLon = desObject.getString("endlongitude");
-			       
-			        Log.d("test:", desObject.toString());
-			       Driver d = new Driver();
-			       d.setStartlat(dStartLat);
-			       d.setStartlon(dStartLon);
-			       d.setUserName(userN);
-			       d.setEndlon(dEndLon);
-			       d.setEndlat(dEndLat);
-			       d.setDay(driverdate);
-			       d.setTime(dTime);
-			    }
-			    if( jsnobject != null){
-			        tvDestination.setText("Press Here To Show Your Destenation");
-			        }
-			}catch(JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			
 //			dialog.dismiss();
-			
-		
-		}
-}
+//			
+//			finish();
+//		}
+//
+//	}
 
+
+}
+class RetrieveDestinationsTask extends AsyncTask<String, Integer, String>{
+
+	
+    
+	
+	@Override
+	protected void onPreExecute() {
+		// TODO Auto-generated method stub
+		super.onPreExecute();		
+	}
+	
+	
+	@Override
+	protected String doInBackground(String... params) {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+			ArrayList<BasicNameValuePair> urlparameters=new ArrayList<BasicNameValuePair>();
+		
+			URI u=new URI("http://172.16.8.105:8080/MyWayWeb/getDestination");
+			DefaultHttpClient client=new DefaultHttpClient();
+			
+			HttpPost post = new HttpPost(u);
+			urlparameters.add(new BasicNameValuePair("driverUserName", "ahmed"));
+			post.setEntity(new UrlEncodedFormEntity(urlparameters));
+			
+			HttpResponse response=client.execute(post);
+			HttpEntity entity=response.getEntity();
+		    String data=EntityUtils.toString(entity);
+			
+
+			return data;
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return null;
+	}
+	
+	
+	@Override
+	protected void onPostExecute(String result) {
+		
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);			
+		//convert the json string to arraylist of events
+		
+		System.out.print(result);
+		
+		try {
+			JSONObject jsnobject = new JSONObject(result);
+			JSONArray jsonArray = new JSONArray(jsnobject.getString("result_data"));
+			
+			System.out.print(jsonArray);
+		    for (int i = 0; i < jsonArray.length(); i++) {
+		        JSONObject desObject = jsonArray.getJSONObject(i);
+//		        String userN = desObject.getString("userName");
+//		        String driverdate = desObject.getString("date");
+//		        String dTime = desObject.getString("Time");
+		        String dStartLat = desObject.getString("destination_Lat");
+		        String dStartLon = desObject.getString("destination_Lon");
+		     System.out.print(dStartLon);
+		       
+		        //Log.d("test:", desObject.toString());
+		       Driver d = new Driver();
+		       d.setStartlat(dStartLat);
+		       d.setStartlon(dStartLon);
+//		       d.setUserName(userN);
+//		       
+//		       d.setDay(driverdate);
+//		       d.setTime(dTime);
+		    }
+		    
+		}catch(JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	
+	}
 }
