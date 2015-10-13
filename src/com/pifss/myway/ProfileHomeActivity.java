@@ -1,10 +1,20 @@
 package com.pifss.myway;
 
 import java.io.Reader;
+import java.net.URI;
+import java.util.ArrayList;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,24 +32,35 @@ import android.widget.TextView;
 public class ProfileHomeActivity extends Activity {
 
 //	public final static String PREF_NAME = "userInformation";
-
+	private final InformationManager imm = new InformationManager(this);
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_home);
 		
 		////////////////////// To set the user info on the profile ////////////////////////
+		
+		JSONObject userJson;
+		userJson = imm.getUserInformation();
+		String username = "";
+		
+		try {
+			username = userJson.getString("username");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String [] stringArray = {username};
+		new GetUserInfo().execute(stringArray);
+		
+		/*
 		TextView tvUsername = (TextView) findViewById(R.id.textViewProfileUsername);
 		ImageView userImg = (ImageView) findViewById(R.id.imageViewProfileImage);
-		final InformationManager imm = new InformationManager(this);
-		JSONObject userJson;
 		
-		
-		
-		
-		userJson = imm.getUserInformation();
 		try {
-			String username = userJson.getString("username");
+			
 			tvUsername.setText(username);
 			
 			Bitmap bm = imm.readImage();
@@ -52,7 +73,7 @@ public class ProfileHomeActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		*/
 		//////////////////////////////// Go to edit profile page /////////////////////////////////////////
 		ImageView imIcon = (ImageView) findViewById(R.id.imageViewEditIcon); //edit profile icon
 
@@ -115,5 +136,70 @@ public class ProfileHomeActivity extends Activity {
 		startActivity(i);
 		finish();
     }
+	
+	class GetUserInfo extends AsyncTask<String, Void, User> {
+		
+		@Override
+		protected User doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			
+			JSONArray userInfoJson = new JSONArray();
+			JSONObject user = new JSONObject();
+			
+			try {
+				URI uri = new URI("");
+				
+				DefaultHttpClient client = new DefaultHttpClient();
+				
+				HttpPost postRequest = new HttpPost(uri);
+				
+				ArrayList<BasicNameValuePair> arrayList = new ArrayList<BasicNameValuePair>();
+				arrayList.add(new BasicNameValuePair("username", params[0]));
+				
+				HttpResponse response = client.execute(postRequest);
+				
+				HttpEntity entity = response.getEntity();
+			    String jsonString = EntityUtils.toString(entity);
+			    
+			    JSONObject jsonData = new JSONObject(jsonString);
+			    
+			    userInfoJson = new JSONArray(jsonData.getString("result_data"));
+			    
+			} catch(Exception e) {
+				
+			}
+			
+			try {
+				user = userInfoJson.getJSONObject(0);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				return new User(params[0],user.getString("password"),user.getString("email"),user.getString("profile_picture"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(User user) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(user);
+			
+			TextView tvUsername = (TextView) findViewById(R.id.textViewProfileUsername);
+			ImageView userImg = (ImageView) findViewById(R.id.imageViewProfileImage);
+			
+			tvUsername.setText(user.getUsername());
+			userImg.setImageBitmap(imm.decodeBase64(user.getProfilePicture()));
+			//set email
+			
+		}
+		
+	}
 
 }

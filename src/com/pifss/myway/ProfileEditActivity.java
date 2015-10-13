@@ -3,11 +3,19 @@ package com.pifss.myway;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.app.Activity;
@@ -31,6 +39,7 @@ public class ProfileEditActivity extends Activity {
 	public final static String PREF_NAME = "userInformation";
 	JSONObject userJson;
 	InformationManager imm;
+	View view;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +84,14 @@ public class ProfileEditActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				view = v;
 				// TODO Auto-generated method stub
 				EditText etOldPass = (EditText) findViewById(R.id.editTextOldPassConfirm);
 				EditText etNewPass = (EditText) findViewById(R.id.editTextPasswordEdit);
 				EditText etUsername = (EditText) findViewById(R.id.editTextUsernameEdit);
 				EditText etPassword = (EditText) findViewById(R.id.editTextPasswordEdit);
-				JSONObject json = new JSONObject();
+				//JSONObject json = new JSONObject();
+				User user = new User();
 
 				try {
 
@@ -90,11 +101,12 @@ public class ProfileEditActivity extends Activity {
 						if (etUsername.getText().length() < 5) {
 							etUsername.setError("Username too short");
 						} else {
-							json.put("username", etUsername.getText()
-									.toString());
+							//json.put("username", etUsername.getText().toString());
+							user.setUsername(etUsername.getText().toString());
 						}
 					} else {
-						json.put("username", UN);
+						user.setUsername(UN);
+						//json.put("username", UN);
 					}
 
 					// checking email
@@ -104,10 +116,12 @@ public class ProfileEditActivity extends Activity {
 								etEmail.getText().toString()).matches()) {
 							etEmail.setError("Invalid email address");
 						} else {
-							json.put("email", etEmail.getText().toString());
+							//json.put("email", etEmail.getText().toString());
+							user.setEmail(etEmail.getText().toString());
 						}
 					} else {
-						json.put("email", EM);
+						user.setEmail(EM);
+						//json.put("email", EM);
 					}
 
 					// checking passwords
@@ -117,7 +131,8 @@ public class ProfileEditActivity extends Activity {
 						if (etNewPass.getText().length() > 8
 								&& etOldPass.getText().toString()
 										.equals(oldPass)) {
-							json.put("password", etNewPass.getText().toString());
+							//json.put("password", etNewPass.getText().toString());
+							user.setPassword(etNewPass.getText().toString());
 							flag = true;
 						} else {
 							Toast.makeText(ProfileEditActivity.this,
@@ -129,11 +144,13 @@ public class ProfileEditActivity extends Activity {
 							flag = false;
 						}
 					} else {
-						json.put("password", oldPass);
+						//json.put("password", oldPass);
+						user.setPassword(oldPass);
 						flag = true;
 					}
 
 					if (flag) {
+						/*
 						SharedPreferences prefs = v.getContext()
 								.getSharedPreferences(PREF_NAME,
 										v.getContext().MODE_APPEND);
@@ -143,14 +160,11 @@ public class ProfileEditActivity extends Activity {
 						editor.putString("user", json.toString());
 
 						editor.commit();
-
-						Intent i = new Intent(v.getContext(),
-								ProfileHomeActivity.class);
-						startActivity(i);
-						finish();// to prevent going back to the previous page.
-									// on the activity i can do it without
-									// getActivity()!
-
+						*/
+						
+						User [] userArray = {user};
+						new EditUserProfile().execute(userArray);
+						
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -219,5 +233,44 @@ public class ProfileEditActivity extends Activity {
 			startActivity(i);
 			finish();
 	    }
-
+		
+		class EditUserProfile extends AsyncTask<User, Void, Void> {
+			
+			@Override
+			protected Void doInBackground(User... params) {
+				// TODO Auto-generated method stub
+				
+				try {
+					URI uri = new URI("");
+					
+					DefaultHttpClient client = new DefaultHttpClient();
+					
+					HttpPost postRequest = new HttpPost(uri);
+					
+					ArrayList<BasicNameValuePair> arrayList = new ArrayList<BasicNameValuePair>();
+					arrayList.add(new BasicNameValuePair("username", params[0].getUsername()));
+					arrayList.add(new BasicNameValuePair("password", params[0].getPassword()));
+					arrayList.add(new BasicNameValuePair("email", params[0].getEmail()));
+					arrayList.add(new BasicNameValuePair("profile_picture", params[0].getProfilePicture()));
+					postRequest.setEntity(new UrlEncodedFormEntity(arrayList));
+					
+					HttpResponse response = client.execute(postRequest);
+				} catch (Exception e) {
+					
+				}
+				
+				return null;
+			}
+			
+			@Override
+			protected void onPostExecute(Void result) {
+				// TODO Auto-generated method stub
+				super.onPostExecute(result);
+				
+				Intent i = new Intent(view.getContext(),
+						ProfileHomeActivity.class);
+				startActivity(i);
+				finish();
+			}
+		}
 }
