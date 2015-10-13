@@ -205,7 +205,12 @@
             android:name=".RequestEventActivity"
             android:label="@string/title_activity_request_event" >
         </activity>
-        <activity android:name="SetLocationActivity"></activity>
+        <activity android:name=".SetLocationActivity" >
+        </activity>
+        <activity
+            android:name=".DriverDestenationList"
+            android:label="@string/title_activity_driver_destenation_list" >
+        </activity>
     </application>
 
 </manifest>

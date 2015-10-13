@@ -213,24 +213,24 @@ public class Activity_hazard extends Activity {
 				
 				
 				try {
-					URI u=new URI("http://mobile.comxa.com/reports/all_reports.json");
+					URI u=new URI("http://172.16.8.105:8080/MyWayWeb/postTrafficReport");
 					
 					DefaultHttpClient client=new DefaultHttpClient();
 					
 				
 					HttpPost post=new HttpPost(u);	
 					ArrayList<BasicNameValuePair> l=new ArrayList<BasicNameValuePair>();
-					l.add(new BasicNameValuePair("reportTypeId",typeId.toString()));
-					l.add(new BasicNameValuePair("lat", lat.toString()));
-					l.add(new BasicNameValuePair("lon", lon.toString()));
+					l.add(new BasicNameValuePair("report_type",typeId.toString()));
+					l.add(new BasicNameValuePair("report_lat", lat.toString()));
+					l.add(new BasicNameValuePair("report_log", lon.toString()));
 					l.add(new BasicNameValuePair("username", name));
 					if(hazardComment.equals("")){
 						
-							l.add(new BasicNameValuePair("comment","Caution! there is a hazard ahead"));	
+							l.add(new BasicNameValuePair("report_comments","Caution! there is a hazard ahead"));	
 					}
 					else{
 					
-							l.add(new BasicNameValuePair("comment",hazardComment ));
+							l.add(new BasicNameValuePair("report_comments",hazardComment ));
 					
 					}
 					

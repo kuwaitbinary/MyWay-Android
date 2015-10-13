@@ -2,6 +2,8 @@ package com.pifss.myway;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,24 +17,27 @@ public class DriverProfileActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_driver_profile);
-		
-		TextView username = (TextView) findViewById(R.id.textViewUsername);
-		TextView email = (TextView) findViewById(R.id.textViewEmail);
-		Button viewReportButton = (Button) findViewById(R.id.buttonViewReport);
-		
+		setContentView(R.layout.activity_parent_monitoring__pairing__driver_pairing);
+
+		TextView username = (TextView) findViewById(R.id.textView_ParentControl_AddDriverUsername);
+		TextView driverName = (TextView) findViewById(R.id.textView_ParentControl_AddDriverName);
+		Button setDestenationForDriver = (Button) findViewById(R.id.button_AddDriver);
+
 		username.setText("Abood");
-		email.setText("aa@aa.com");
-		
-		viewReportButton.setOnClickListener(new OnClickListener() {
-			
+		driverName.setText("aa@aa.com");
+
+		setDestenationForDriver.setOnClickListener(new OnClickListener() {
+			// To open the map
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(DriverProfileActivity.this, ParentMonitoring_Report_CustomListView.class);
+				// Intent for opening the driver detail
+				Intent intent = new Intent(DriverProfileActivity.this,
+						DriverMainActivity.class);
 				startActivity(intent);
+
 			}
 		});
-		
+
 	}
 
 	@Override
@@ -49,12 +54,13 @@ public class DriverProfileActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.addJourney) {
-			
+
 			Intent intent = new Intent(this, MonitoringActivity.class);
 			startActivity(intent);
-			
+
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 }

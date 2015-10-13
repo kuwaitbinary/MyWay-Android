@@ -28,20 +28,20 @@ public class ParentalMonitoringActivity extends Activity {
 		
 		super.onResume();
 		
-		ListView listView = (ListView) findViewById(R.id.driverList);
-        TextView textView = (TextView) findViewById(R.id.listTitle);
+		ListView driverlv = (ListView) findViewById(R.id.driverList);
+        TextView ifNoDriverFound = (TextView) findViewById(R.id.listTitle);
         
         ArrayList<Driver> driverList = ParentalMonitoringConnectionManager.getDriverList();
         DriverAdapter adapter = new DriverAdapter (driverList,this);
         
-        listView.setEmptyView(textView);
+        driverlv.setEmptyView(ifNoDriverFound);
         
         if (driverList != null) {
-        	listView.setAdapter(adapter);
-        	listView.setClickable(true);
+        	driverlv.setAdapter(adapter);
+        	driverlv.setClickable(true);
         }
     	
-    	listView.setOnItemClickListener(new OnItemClickListener() {
+        driverlv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,

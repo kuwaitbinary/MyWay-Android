@@ -92,7 +92,7 @@ public class SlidingUtil {
 
 				}
 				if (loc == 6){
-					Intent i = new Intent(activity, ParentalMonitoringActivity.class);
+					Intent i = new Intent(activity, DriverDestenationList.class);
 					activity.startActivity(i);
 					activity.finish();
 				}

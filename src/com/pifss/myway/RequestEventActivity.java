@@ -305,7 +305,7 @@ public class RequestEventActivity extends Activity {
 				HttpPost post = null;
 				ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
 
-				u = new URI("http://mobile.comxa.com/events/new_all_events.json");
+				u = new URI("http://172.16.8.105:8080/MyWayWeb/requestEvent");
 				post = new HttpPost(u);
 
 				SharedPreferences pref = getSharedPreferences(PREF_NAME,
@@ -332,7 +332,8 @@ public class RequestEventActivity extends Activity {
 						tempUsername));
 				urlparameters.add(new BasicNameValuePair("startDate", startDate));
 				urlparameters.add(new BasicNameValuePair("endDate", endDate));
-
+				urlparameters.add(new BasicNameValuePair("category", etCat.getText().toString()));
+				urlparameters.add(new BasicNameValuePair("description", etDec.getText().toString()));
 				urlparameters.add(new BasicNameValuePair("image", encodedImage));
 				
 				post.setEntity(new UrlEncodedFormEntity(urlparameters));

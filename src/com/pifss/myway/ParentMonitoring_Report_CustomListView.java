@@ -32,7 +32,7 @@ public class ParentMonitoring_Report_CustomListView extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_custom_list_view_android_example);
+		setContentView(R.layout.activity_parent_monitoring__pairing__driver_pairing);
 		
 		
 		ParentMonitoring_Report_ListModel sched = new ParentMonitoring_Report_ListModel();
@@ -102,7 +102,7 @@ public class ParentMonitoring_Report_CustomListView extends Activity {
 		//setListData();
 		
 		Resources res =getResources(); 
-        list=(ListView)findViewById(R.id.list);
+        list=(ListView)findViewById(R.id.driverReportList);
         
         /**************** Create Custom Adapter *********/
         

@@ -107,5 +107,6 @@
     <string name="title_activity_event_info_view">EventInfoViewActivity</string>
     <string name="bSendToMap">Send To Map</string>
     <string name="title_activity_request_event">RequestEventActivity</string>
+    <string name="title_activity_driver_destenation_list">DriverDestenationList</string>
 
 </resources>

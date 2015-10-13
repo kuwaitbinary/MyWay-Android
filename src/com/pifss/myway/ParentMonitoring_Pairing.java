@@ -21,7 +21,7 @@ public class ParentMonitoring_Pairing extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parent_monitoring__pairing);
+        setContentView(R.layout.activity_parental_monitoring);
         
         //code to search the database and populate the list
         
@@ -29,7 +29,7 @@ public class ParentMonitoring_Pairing extends Activity {
         
         //change the array to the database information
         final String[] vals = {"Omar" , "Ahmed" , "Ali" , "Bader"};
-        ListView lv = (ListView) findViewById(R.id.listView_ParentControl_DriversList);
+        ListView lv = (ListView) findViewById(R.id.driverList);
         
         Adabtor_ParentMonitoring_SearchDriver adabtor = new Adabtor_ParentMonitoring_SearchDriver(vals, this);
         
