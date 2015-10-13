@@ -43,7 +43,7 @@ public class FavoritesViewActivity extends Activity {
 	ArrayList<String> favoritesNames = new ArrayList<String>();
 	ArrayList<Favorite> favoritesList = new ArrayList<Favorite>();
 	ListView lvFavs;
-	String actionFlag = "";
+//	String actionFlag = "";
 	int favToDelete;
 	public final static String PREF_NAME = "userInformation";
 
@@ -120,78 +120,40 @@ public class FavoritesViewActivity extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			try {
-				if (actionFlag.equals("delete")) {
-					ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
 
-					URI u = new URI(
-							"http://mobile.comxa.com/fav/delete_fav.json");
-					DefaultHttpClient client = new DefaultHttpClient();
+				ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
 
-					HttpPost post = new HttpPost(u);
+				URI u = new URI(
+						"http://172.16.8.105:8080/MyWayWeb/viewAllFavorites");
+				DefaultHttpClient client = new DefaultHttpClient();
 
-					SharedPreferences pref = getSharedPreferences(PREF_NAME,
-							MODE_APPEND);
-					String userObj = pref.getString("user", "ERROR");
-					String tempUsername = "";
-					JSONObject userJson;
-					try {
-						userJson = new JSONObject(userObj);
-						tempUsername = userJson.getString("username");
+				HttpPost post = new HttpPost(u);
 
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					urlparameters.add(new BasicNameValuePair("name", favoritesNames.get(favToDelete)));
-					urlparameters.add(new BasicNameValuePair("username",
-							tempUsername));
+				SharedPreferences pref = getSharedPreferences(PREF_NAME,
+						MODE_APPEND);
+				String userObj = pref.getString("user", "ERROR");
+				String tempUsername = "";
+				JSONObject userJson;
+				try {
+					userJson = new JSONObject(userObj);
+					tempUsername = userJson.getString("username");
 
-					post.setEntity(new UrlEncodedFormEntity(urlparameters));
-
-					HttpResponse response = client.execute(post);
-					HttpEntity entity = response.getEntity();
-					String data = EntityUtils.toString(entity);
-
-					// Log.d("test:", data);
-					favoritesList.clear();
-					favoritesNames.clear();
-					favToDelete = -1;
-					actionFlag = "";
-					return data;
-				} else {
-					ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
-
-					URI u = new URI("http://mobile.comxa.com/fav/all_favs.json");
-					DefaultHttpClient client = new DefaultHttpClient();
-
-					HttpPost post = new HttpPost(u);
-
-					SharedPreferences pref = getSharedPreferences(PREF_NAME,
-							MODE_APPEND);
-					String userObj = pref.getString("user", "ERROR");
-					String tempUsername = "";
-					JSONObject userJson;
-					try {
-						userJson = new JSONObject(userObj);
-						tempUsername = userJson.getString("username");
-
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					urlparameters.add(new BasicNameValuePair("username",
-							tempUsername));
-
-					post.setEntity(new UrlEncodedFormEntity(urlparameters));
-
-					HttpResponse response = client.execute(post);
-					HttpEntity entity = response.getEntity();
-					String data = EntityUtils.toString(entity);
-
-					// Log.d("test:", data);
-					return data;
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+
+				urlparameters.add(new BasicNameValuePair("username",
+						tempUsername));
+
+				post.setEntity(new UrlEncodedFormEntity(urlparameters));
+
+				HttpResponse response = client.execute(post);
+				HttpEntity entity = response.getEntity();
+				String data = EntityUtils.toString(entity);
+
+				// Log.d("test:", data);
+				return data;
 
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
@@ -250,7 +212,7 @@ public class FavoritesViewActivity extends Activity {
 			lvFavs = (ListView) findViewById(R.id.listViewFavorites);
 
 			lvFavs.setAdapter(adapter);
-			
+
 			lvFavs.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
@@ -287,6 +249,90 @@ public class FavoritesViewActivity extends Activity {
 
 	}
 
+	class DeleteFavTask extends AsyncTask<String, Integer, String> {
+
+		ProgressDialog dialog = new ProgressDialog(FavoritesViewActivity.this);
+
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			dialog.setTitle("Deleting Favorites");
+			dialog.setMessage("Deleting....");
+			dialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			try {
+				ArrayList<BasicNameValuePair> urlparameters = new ArrayList<BasicNameValuePair>();
+
+				URI u = new URI(
+						"http://172.16.8.105:8080/MyWayWeb/deleteFavorite");
+				DefaultHttpClient client = new DefaultHttpClient();
+
+				HttpPost post = new HttpPost(u);
+
+				SharedPreferences pref = getSharedPreferences(PREF_NAME,
+						MODE_APPEND);
+				String userObj = pref.getString("user", "ERROR");
+				String tempUsername = "";
+				JSONObject userJson;
+				try {
+					userJson = new JSONObject(userObj);
+					tempUsername = userJson.getString("username");
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				urlparameters.add(new BasicNameValuePair("name", favoritesNames
+						.get(favToDelete)));
+				urlparameters.add(new BasicNameValuePair("username",
+						tempUsername));
+
+				post.setEntity(new UrlEncodedFormEntity(urlparameters));
+
+				HttpResponse response = client.execute(post);
+				HttpEntity entity = response.getEntity();
+				String data = EntityUtils.toString(entity);
+
+				// Log.d("test:", data);
+				favoritesList.clear();
+				favoritesNames.clear();
+				favToDelete = -1;
+//				actionFlag = "";
+				return data;
+
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			dialog.dismiss();
+			new RetrieveFavsTask().execute();
+
+		}
+
+	}
+
 	public void removeItemFromList(final int position) {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -296,9 +342,9 @@ public class FavoritesViewActivity extends Activity {
 		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				// User clicked OK button
-				actionFlag = "delete";
+//				actionFlag = "delete";
 				favToDelete = position;
-				new RetrieveFavsTask().execute();
+				new DeleteFavTask().execute();
 
 			}
 		});

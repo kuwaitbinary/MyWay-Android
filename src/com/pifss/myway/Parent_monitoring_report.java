@@ -12,7 +12,7 @@ public class Parent_monitoring_report extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_parent_monitoring_report);
+		setContentView(R.layout.driver_list_row);
 		
 		/*String newString;
 		if (savedInstanceState == null) {
@@ -28,14 +28,14 @@ public class Parent_monitoring_report extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		
-		ImageView imageView = (ImageView) findViewById(R.id.reportImage);
-		TextView reportField = (TextView) findViewById(R.id.reportField);
-		TextView reportDate = (TextView) findViewById(R.id.reportDate);
-		TextView reportTime = (TextView) findViewById(R.id.reportTime);
+//		ImageView driverImage = (ImageView) findViewById(R.id.imageViewDriverReport);
+//		TextView reportField = (TextView) findViewById(R.id.driverName);
+//		TextView reportDate = (TextView) findViewById(R.id.textViewDriverReportDate);
+//		TextView reportTime = (TextView) findViewById(R.id.textViewDriverReportTime);
 		
-		reportField.setText(extras.getString("ReportField"));
-		reportDate.setText(extras.getString("Date"));
-		reportTime.setText(extras.getString("Time"));
+//		reportField.setText(extras.getString("ReportField"));
+//		reportDate.setText(extras.getString("Date"));
+//		reportTime.setText(extras.getString("Time"));
 	}
 
 	@Override

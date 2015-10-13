@@ -2,16 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="blocksDescendants">
-
-    <TextView
-        android:id="@+id/driverName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    android:background="@drawable/background_all"
+    android:descendantFocusability="blocksDescendants" >
   
     <ImageButton
         android:id="@+id/deleteDriver"
@@ -20,5 +12,41 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:src="@android:drawable/ic_menu_delete" />
+
+    <TextView
+        android:id="@+id/driverDestenationTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Setted Time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/driverDestenationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/deleteDriver"
+        android:layout_alignParentLeft="true"
+        android:text="Setted Date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewDriverSettedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/driverDestenationTime"
+        android:layout_alignBottom="@+id/driverDestenationTime"
+        android:layout_centerHorizontal="true"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewDriverSettedtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/driverDestenationDate"
+        android:layout_alignLeft="@+id/textViewDriverSettedTime"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

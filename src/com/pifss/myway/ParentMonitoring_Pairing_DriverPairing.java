@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 public class ParentMonitoring_Pairing_DriverPairing extends Activity {
 
+	private int id;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,7 +24,7 @@ public class ParentMonitoring_Pairing_DriverPairing extends Activity {
 		// content holder for the pairing request on the drivers device
 		
 		TextView username = (TextView) findViewById(R.id.textView_ParentControl_AddDriverUsername);
-		TextView userEmail = (TextView) findViewById(R.id.textView_ParentControl_AddDriverUserEmail);
+		TextView driverName = (TextView) findViewById(R.id.textView_ParentControl_AddDriverName);
 		
 		//Code to get the extra info from intent
 		
@@ -32,16 +34,16 @@ public class ParentMonitoring_Pairing_DriverPairing extends Activity {
 		    if(extras == null) {
 		        newString= null;
 		    } else {
-		        newString= extras.getString("username");
+		        newString= extras.getString("userName");
 		    }
 		} else {
-		    newString= (String) savedInstanceState.getSerializable("username");
+		    newString= (String) savedInstanceState.getSerializable("userName");
 		}
 		
 		// change the data source to info from database
 		
 		username.setText(newString);
-		userEmail.setText(newString);
+		driverName.setText(newString);
 		
 		Button add = (Button) findViewById(R.id.button_AddDriver);
 		
@@ -49,7 +51,7 @@ public class ParentMonitoring_Pairing_DriverPairing extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				ParentalMonitoringConnectionManager.addDriver(new Driver(newString));
+				ParentalMonitoringConnectionManager.addDriver(new Driver());
 				
 				Intent intent = new Intent(ParentMonitoring_Pairing_DriverPairing.this, ParentalMonitoringActivity.class);
 	        	startActivity(intent);
@@ -68,10 +70,7 @@ public class ParentMonitoring_Pairing_DriverPairing extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		id = item.getItemId();
 		
 		return super.onOptionsItemSelected(item);
 	}

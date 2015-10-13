@@ -43,18 +43,18 @@ public class Adabtor_ParentMonitoring_SearchDriver extends BaseAdapter{
 	}
 
 	@Override
-	public View getView(int arg0, View arg1, ViewGroup arg2) {
+	public View getView(int arg0, View view, ViewGroup vg) {
 		// TODO Auto-generated method stub
 		
-		if(arg1 == null)
+		if(view == null)
 		{
-			arg1 = myInflater.inflate(android.R.layout.simple_list_item_1, arg2 , false);
+			view = myInflater.inflate(android.R.layout.simple_list_item_1, vg , false);
 		}
 		
-		TextView name = (TextView) arg1.findViewById(android.R.id.text1);
+		TextView name = (TextView) view.findViewById(android.R.id.text1);
 		name.setText(names[arg0]+"");
 		
-		return arg1;
+		return view;
 	}
 
 }

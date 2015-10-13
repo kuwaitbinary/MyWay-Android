@@ -2,6 +2,7 @@ package com.pifss.myway;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
@@ -45,18 +46,20 @@ public class DriverAdapter extends BaseAdapter {
 		return position;
 	}
 
-	@Override
+	@SuppressLint({ "ViewHolder", "InflateParams" }) @Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		
-		View view = inflater.inflate(R.layout.driver_list_row, null);
+		View inflate = inflater.inflate(R.layout.driver_list_row, null);
+		View view = inflate;
 		
 		final Driver driver = list.get(position);
 		
-		TextView usernameTextView = (TextView) view.findViewById(R.id.driverName);
+		TextView driverTimeTextView = (TextView) view.findViewById(R.id.textViewDriverSettedTime);
+		TextView driverDateTextView = (TextView) view.findViewById(R.id.textViewDriverSettedtDate);
 		ImageButton deleteDriverButton = (ImageButton) view.findViewById(R.id.deleteDriver);
 		
-		usernameTextView.setText(driver.getUsername());
-		
+		driverTimeTextView.setText(driver.getTime());
+		driverDateTextView.setText(driver.getDay());
 		deleteDriverButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

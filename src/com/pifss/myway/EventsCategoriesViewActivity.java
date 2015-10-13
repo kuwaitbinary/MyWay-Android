@@ -153,7 +153,7 @@ class RetrieveFavsTask extends AsyncTask<String, Integer, String>{
 				
 				ArrayList<BasicNameValuePair> urlparameters=new ArrayList<BasicNameValuePair>();
 			
-				URI u=new URI("http://mobile.comxa.com/events/list_events.json");
+				URI u=new URI("http://172.16.8.105:8080/MyWayWeb/requestEvent");
 				DefaultHttpClient client=new DefaultHttpClient();
 				
 				HttpPost post = new HttpPost(u);

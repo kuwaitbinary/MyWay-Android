@@ -2,12 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:background="@drawable/bg"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.piffs.myway.ParentMonitoring_Pairing_DriverPairing" >
+
+    <ListView
+        android:id="@+id/driverReportList"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+    </ListView>
 
     <ImageView
         android:id="@+id/imageView_ParentControl_ProfilePicture"
@@ -15,36 +25,81 @@
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="22dp"
         android:src="@drawable/ic_launcher" />
 
     <Button
         android:id="@+id/button_AddDriver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/driverReportList"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Add"
+        android:text="Set New Destination"
         android:textColor="#FFFFA217" />
-
-    <TextView
-        android:id="@+id/textView_ParentControl_AddDriverUserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView_ParentControl_ProfilePicture"
-        android:layout_alignLeft="@+id/button_AddDriver"
-        android:layout_marginLeft="31dp"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView_ParentControl_AddDriverUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView_ParentControl_AddDriverUserEmail"
         android:layout_alignTop="@+id/imageView_ParentControl_ProfilePicture"
+        android:layout_toRightOf="@+id/imageView_ParentControl_ProfilePicture"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView_ParentControl_AddDriverName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView_ParentControl_ProfilePicture"
+        android:layout_alignLeft="@+id/textView_ParentControl_AddDriverUsername"
+        android:layout_marginLeft="16dp"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/DriverDasboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView_ParentControl_ProfilePicture"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/imageView_ParentControl_ProfilePicture"
+        android:text="DriverDasboard"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewCurrentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView_ParentControl_ProfilePicture"
+        android:layout_below="@+id/DriverDasboard"
+        android:layout_marginTop="17dp"
+        android:text="Current Location:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewShowsCurrentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView_ParentControl_AddDriverUsername"
+        android:layout_below="@+id/textViewCurrentLocation"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewShowsBattrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_AddDriver"
+        android:layout_alignLeft="@+id/textViewShowsCurrentLocation"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewBattreyStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewShowsCurrentLocation"
+        android:layout_toLeftOf="@+id/textViewShowsBattrey"
+        android:text="Battrey Status:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
